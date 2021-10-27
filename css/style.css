@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap');
+
+.textIni{
+    font-family: 'Lobster Two', cursive;
+}
+
+.parraf{
+    text-align: justify;
+}
+
+.logoNav{
+    width: 15%;
+    padding: 10px;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Grupo 4">
+  <meta name="description" content="Proyecto javascript productos ">
+  <meta name="keywords" content="objetos, clases, DOM, BOM, javascript, html">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/35e1f586d0.js" crossorigin="anonymous"></script>
+  <title>Aprendamos - BS</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+      <div class="container">
+        <a class="navbar-brand titulo-cursiva active" aria-current="page" href="index.html">
+          <p class="textIni"> <img src="images/logo.png" class="logoNav" alt="logo bookstore">Aprendamos - Bookstore</p>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/login.html" target="_blank">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/catalogo.html" target="_blank">Catálogo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/registrar.html" target="_blank">Registrar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/nosotros.html" target="_blank">Nosotros</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container my-2">
+      <section>
+        <article>
+          <h3 class="display-5 text-center my-3 text-primary">Aprendamos</h3>
+        </article>
+        <hr class="container" />
+        <div class="text-center">
+          <img src="/images/books.jpg" alt="libros, tienda" style="width: 50%" />
+          <p class="titulo-cursiva my-3 display-6">
+            "La lectura de un buen libro es un diálogo incesante en que el libro habla y el
+            alma contesta"
+          </p>
+        </div>
+      </section>
+
+      <section class="row">
+        <div class="col-sm-12 col-md-5 my-3 d-flex justify-content-center">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="display-5 text-center my-3 text-primary">Contacto</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+              <h4> <span><i class="fas fa-envelope"></i></span> Email: aprendamos@gmail.com</h4>
+              <br />
+              <h4><span><i class="fas fa-phone-alt"></i></span> Telefono: 032 362 249</h4>
+              <br />
+              <h4> <span><i class="fab fa-whatsapp"></i></span> Whatsapp: +593 9855 41 895</h4>
+              <br />
+              <iframe class="my-3"
+                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d997.0285811449191!2d-78.66362634553128!3d-1.6745988300651031!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sec!4v1634838547998!5m2!1ses!2sec"
+                width="400" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-7 my-3 d-flex justify-content-center">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="display-5 text-center my-3 text-primary">Nosotros</h3>
+            </div>
+            <div class="card-body">
+              <div class="text-center">
+                <img src="/images/nosotros.jpg" alt="libros, tienda" style="width: 100%" />
+              </div>
+              <p class="card-text my-4 parraf"> Somos un grupo de personas amantes de la lectura y los libros. Creemos
+                firmemente que la educación
+                es el camino a una mejor sociedad pero sobretodo un camino hacia el propio auto conocimiento y la
+                libertad
+                personal.
+              </p>
+              <p class="card-text my-4 parraf"> "Adquirir el hábito de la lectura es construirse un refugio contra casi
+                todas
+                las miserias de la vida" (William Sommerset).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="row">
+        <div class="col-sm-12 col-md-6 my-3 d-flex justify-content-center">
+          <div class="card">
+            <div class="card-header">
+              DOM
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Document object model</h5>
+              <p class="card-text">Objectos que tienen relación con la página cargada.</p>
+              <a href="#" class="btn btn-primary">Registrar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 my-3 d-flex justify-content-center">
+          <div class="card">
+            <div class="card-header">
+              BOM
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Browser object model</h5>
+              <p class="card-text">Objectos relacionados con cosas fuera de la página (navegador, pantalla).</p>
+              <a href="#" class="btn btn-primary">Registrar</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-foot text-light bg-secondary py-5 px-5">
+    <section class="container">
+      <div class="cont">
+        <h3 class="me-5"> Menú de navegación </h3>
+        <a href="https:/facebook.com" target="_blank" class="me-2"><i
+            class="fab fa-facebook-square fa-2x text-dark"></i></a>
+        <a href="https:/instagram.com" target="_blank" class="me-2"><i
+            class="fab fa-instagram-square fa-2x text-dark"></i></i></a>
+        <a href="https:/twitter.com" target="_blank" class="me-2"><i
+            class="fab fa-twitter-square fa-2x text-dark"></i></i></i></a>
+      </div>
+      <article class="row justify-content-center">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <h4 class="text-left text-foot"> Catálogo </h4>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Ciencia</a>
+          </div>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Ciencia ficción</a>
+          </div>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Romance</a>
+          </div>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Superación</a>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <h4 class="text-left text-foot"> Autores </h4>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Ciencia</a>
+          </div>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Ciencia ficción</a>
+          </div>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Romance</a>
+          </div>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Superación</a>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <h4 class="text-left text-foot"> Acerca de </h4>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Admin</a>
+          </div>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Quienes somos</a>
+          </div>
+          <div>
+            <a class="text-left text-foot text-light" href="#">Horarios de atención</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </footer>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="module" src="js/admin.js"></script>
+
+</body>
+
+</html>
