@@ -19,7 +19,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
       <div class="container">
         <a class="navbar-brand titulo-cursiva active" aria-current="page" href="../index.html">
-          <p class="textIni"> <img src="../images/logo.png" class="logoNav" alt="logo bookstore">Aprendamos - Bookstore</p>
+          <p class="textIni"> <img src="../images/logo.png" class="logoNav" alt="logo bookstore">Aprendamos - Bookstore
+          </p>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +38,7 @@
               <a class="nav-link" href="../pages/catalogo.html" target="_blank">Catálogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../pages/registrar.html" target="_blank">Registrar</a>
+              <a class="nav-link" href="../pages/admin.html" target="_blank">Administración</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../pages/nosotros.html" target="_blank">Nosotros</a>
@@ -49,7 +50,52 @@
   </header>
 
   <main>
-    
+    <div class="usuarioI">
+      <section class="container">
+        <p id="iniSes" class="mb-3 mb-lg-1"> Usuario no registrado</p>
+      </section>
+    </div>
+    <div class="contenedor2 text-center my-5">
+      <h1 class="display-6 my-4 text-center text-primary">Inicio de sesión</h1>
+      <section class="my-4 bg-light p-3 borderF">
+        <form id="formPersonas">
+          <div class="my-3 mb-3">
+            <input type="text" id="usuario" placeholder="usuario" maxlength="20" required>
+            <div class="invalid-feedback">Este campo es obligatorio</div>
+          </div>
+          <div class="mb-3">
+            <input type="password" id="password_" placeholder="**************" maxlength="20" required>
+            <div class="invalid-feedback">Este campo es obligatorio</div>
+          </div>
+          <div class="mb-3">
+            <input type="checkbox">
+            <label> No cerrar sesión </label>
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+          </div>
+          <div class="mb-3">
+            <a href="../pages/error.html">¿Haz olvidado tu contraseña?</a>
+          </div>
+          <div class="mb-3">
+            <p> Puedes acceder con: </p>
+            <a aria-current="page" href="https://www.google.com/"> <img src="../images/cont1.jpg" width="225"
+                alt="inicio google"> </a>
+          </div>
+          <div class="mb-3">
+            <a aria-current="page" href="https://www.google.com/"> <img src="../images/cont2.jpg" width="225"
+                alt="inicio google"> </a>
+          </div>
+          <div class="mb-3">
+            <p> Si no tienes cuenta... </p>
+          </div>
+          <div class="my-3 text-primary">
+            <a href="../pages/error.html"> Registrate aquí.</a>
+          </div>
+        </form>
+      </section>
+
+    </div>
 
   </main>
 
@@ -114,4 +160,5 @@
   <script type="module" src="../js/admin.js"></script>
 
 </body>
+
 </html>

@@ -19,7 +19,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
       <div class="container">
         <a class="navbar-brand titulo-cursiva active" aria-current="page" href="../index.html">
-          <p class="textIni"> <img src="../images/logo.png" class="logoNav" alt="logo bookstore">Aprendamos - Bookstore</p>
+          <p class="textIni"> <img src="../images/logo.png" class="logoNav" alt="logo bookstore">Aprendamos - Bookstore
+          </p>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,10 +38,10 @@
               <a class="nav-link" href="../pages/catalogo.html" target="_blank">Catálogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../pages/admin.html" target="_blank">Administración</a>
+              <a class="nav-link active" href="../pages/admin.html" target="_blank">Administración</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="../pages/nosotros.html" target="_blank">Nosotros</a>
+              <a class="nav-link" href="../pages/nosotros.html" target="_blank">Nosotros</a>
             </li>
           </ul>
         </div>
@@ -48,10 +49,57 @@
     </nav>
   </header>
 
-  <main>
-    
+  <main class="contenedor my-5">
+    <h1 class="display-6 my-4 text-center text-primary">Ingresar nuevo libro</h1>
+    <section class="my-4 bg-light p-3 borderF">
+      <form id="formPersonas">
+        <div class="mb-3">
+          <label for="codigo" class="form-label">Código</label>
+          <input type="text" class="form-control" id="codigo" placeholder="0001">
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" placeholder="El secreto">
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="mb-3">
+          <label for="autor" class="form-label">Autor</label>
+          <input type="text" class="form-control" id="autor" placeholder="Pablo Medina">
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="mb-3">
+          <label for="categoria" class="form-label">Categoría</label>
+          <br>
+          <select id="categoria" name="categoria">
+            <option value="ciencia">Ciencia</option>
+            <option value="ciencia ficcion">Ciencia ficción</option>
+            <option value="romance">Romance</option>
+            <option value="superacion">Superación</option>
+          </select>
+        </div>
 
+        <div class="mb-3">
+          <label for="paginas" class="form-label">Número de páginas</label>
+          <input type="text" class="form-control" id="paginas" placeholder="250">
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Ingresar</button>
+        <button class="btn btn-primary" type="button" onclick="limpiarForm();">Limpiar</button>
+        </div>
+
+        <div class="alert alert-danger mt-4 d-none" role="alert" id="msjAlerta">
+          Los datos ingresados no son correctos!
+        </div>
+
+        <div id="listaTotal">
+
+        </div>
+      </form>
+    </section>
   </main>
+
 
   <footer class="bg-foot text-light bg-secondary py-5 px-5">
     <section class="container">
@@ -114,4 +162,5 @@
   <script type="module" src="../js/admin.js"></script>
 
 </body>
+
 </html>

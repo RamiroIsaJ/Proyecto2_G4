@@ -19,7 +19,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
       <div class="container">
         <a class="navbar-brand titulo-cursiva active" aria-current="page" href="../index.html">
-          <p class="textIni"> <img src="../images/logo.png" class="logoNav" alt="logo bookstore">Aprendamos - Bookstore</p>
+          <p class="textIni"> <img src="../images/logo.png" class="logoNav" alt="logo bookstore">Aprendamos - Bookstore
+          </p>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +38,7 @@
               <a class="nav-link" href="../pages/catalogo.html" target="_blank">Catálogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="../pages/registrar.html" target="_blank">Registrar</a>
+              <a class="nav-link" href="../pages/admin.html" target="_blank">Administración</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../pages/nosotros.html" target="_blank">Nosotros</a>
@@ -48,10 +49,47 @@
     </nav>
   </header>
 
-  <main>
-    
+  <main class="contenedor my-5">
+    <h1 class="display-6 my-4 text-center text-primary">Nuevo usuario</h1>
+    <section class="my-4 bg-light p-3 borderF">
+      <form id="formPersonas">
+        <div class="mb-3">
+          <label for="codigo" class="form-label">ID usuario</label>
+          <input type="text" class="form-control" id="codigo" placeholder="ramiro">
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="mb-3">
+          <label for="correo" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="correo" placeholder="ramiro@gmail.com">
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="mb-3">
+          <label for="anio" class="form-label">Año de nacimiento</label>
+          <input type="text" class="form-control" id="anio" placeholder="1986">
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="mb-3">
+          <label for="password1" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password1" placeholder="**************" maxlength="20">
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="mb-3">
+          <label for="password2" class="form-label">Confirmar contraseña</label>
+          <input type="password" class="form-control" id="password2" placeholder="**************" maxlength="20">
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+  
+        <button class="btn btn-primary" type="submit">Registrarse</button>
+        <button class="btn btn-primary" type="button" onclick="limpiarForm();">Limpiar</button>
+        </div>
 
+        <div class="alert alert-danger mt-4 d-none" role="alert" id="msjAlerta">
+          Los datos ingresados no son correctos!
+        </div>
+      </form>
+    </section>
   </main>
+
 
   <footer class="bg-foot text-light bg-secondary py-5 px-5">
     <section class="container">
@@ -114,4 +152,5 @@
   <script type="module" src="../js/admin.js"></script>
 
 </body>
+
 </html>

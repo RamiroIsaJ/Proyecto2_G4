@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap');
 
+
 .textIni{
     font-family: 'Lobster Two', cursive;
 }
@@ -11,4 +12,51 @@
 .logoNav{
     width: 15%;
     padding: 10px;
+}
+
+.contenedor{
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.contenedor2{
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.borderF{
+    border: 1px solid rgb(196, 194, 194);
+}
+
+.usuarioI{
+    border: 1px solid rgb(196, 194, 194);
+    text-align: right;
+    font-family: 'Lobster Two', cursive;
+    color: royalblue;
+}
+@media (max-width: 992px){
+    .contenedor{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .borderF{
+        border: 1px solid rgb(196, 194, 194);
+    }
+}
+
+
+@media (max-width: 576px){
+    .contenedor{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .borderF{
+        border: 1px solid rgb(196, 194, 194);
+    }
 }
