@@ -121,10 +121,11 @@ function loginAdmin() {
 }
 
 function iniSesion(usuarioC) {
+    let ideUsuario = usuarioC.confirmar;
     saludo.innerHTML = `Hola, ${usuarioC.codigo}`;
     panel1.className = "contenedor2 text-center my-5 d-none";
     panel2.className = "text-center container borderF my-5";
-    if (usuario == 1) {
+    if (ideUsuario == undefined) {
         panelTexto.innerHTML = `Invitado: ${usuarioC.codigo}`;
 
     } else {
