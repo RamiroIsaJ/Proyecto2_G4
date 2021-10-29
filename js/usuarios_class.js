@@ -1,13 +1,13 @@
 export class UsuarioN{
     constructor(){
-        this.id = null;
+        this.codigo = null;
         this.correo = null;
         this.anio = null;
         this.contrasena = null;
     }
 
-    set nuevoId(id){
-        this.id = id;
+    set nuevoCodigo(codigo){
+        this.codigo = codigo;
     }
     set nuevoCorreo(correo){
         this.correo = correo;
@@ -32,10 +32,20 @@ export class UsuarioN{
         return this.contrasena;
     }
 
+    esMayor(){
+        let edad = 2021 - this.anio;
+        if (edad >= 18){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
 
 export class AdminS extends UsuarioN{
     constructor(){
+        super();
         this.confirmar = "12345";
     }
 

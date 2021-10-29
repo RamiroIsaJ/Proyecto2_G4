@@ -69,9 +69,23 @@ export function validarGeneralP(){
     
 }
 
-export function validarGeneralU(){
+export function validarInvitado(){
     let alerta = document.getElementById('msjAlerta');
-    if (validarCampoRequerido(nombre) && validarNumeros(peso) && validarNumeros(altura) && validarAnio(anio)){
+    if (validarCampoRequerido(codigo) && validarCorreo(correo) && validarAnio(anio) && 
+        validarCampoRequerido(claveI) && validarCampoRequerido(claveC)){
+        alerta.className = "alert alert-danger mt-4 d-none";
+        return true;
+    }else{
+        alerta.className = "alert alert-danger mt-4";
+        alerta.innerHTML = "No se puede ingresar. Datos incorrectos.!";
+        return false;
+    }
+}
+
+export function validarAdmin(){
+    let alerta = document.getElementById('msjAlerta');
+    if (validarCodigo(codigo) && validarCorreo(correo) && validarAnio(anio) && 
+        validarCampoRequerido(confirmacion) && validarCampoRequerido(claveI) && validarCampoRequerido(claveC)){
         alerta.className = "alert alert-danger mt-4 d-none";
         return true;
     }else{
