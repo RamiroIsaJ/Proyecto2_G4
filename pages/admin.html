@@ -54,84 +54,105 @@
 
     <main>
         <div class="usuarioI">
-            <section class="container">
-                <p id="iniSes" class="mb-3 mb-lg-1">Sin inicio de sesión</p>
+            <div class="container">
+                <section class="row">
+                    <div class="d-flex justify-content-end">
+                        <p id="iniSes" class="mb-lg-1 mx-3">Iniciar de sesión...</p>
+                        <button id="cerrarS" type="button" class="btn btn-danger btn-sm mb-lg-0">Cerrar</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div id="panel2" class="text-center container borderF my-5">
+            <img src="../images/controlIni.jpeg" alt="inicio no valido" style="width: 20%" />
+            <h4 class="my-4 text-primary">No has iniciado sesión </h4>
+        </div>
+        <div id="panel4" class="text-center container borderF my-3 d-none">
+            <img src="../images/iniCorrecto.png" alt="inicio no valido" style="width: 5%" />
+            <h4 class="my-4 text-primary">Eres un administrador</h4>
+            <h5 id="ideA" class="my-1"> </h5>
+        </div>
+        <div id="panel1" class="d-none">
+            <div class="contenedor my-5">
+                <h1 class="display-6 my-4 text-center text-primary">Administración de libros</h1>
+                <section class="my-4 bg-light p-3 borderF">
+                    <form id="formLibros">
+                        <div class="mb-3">
+                            <label for="codigo" class="form-label textForm">Código</label>
+                            <input type="text" class="form-control " id="codigo" placeholder="0001">
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label textForm">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="El secreto">
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="autor" class="form-label textForm">Autor</label>
+                            <input type="text" class="form-control" id="autor" placeholder="Pablo Medina">
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria" class="form-label textForm">Categoría</label>
+                            <br>
+                            <select id="categoria" name="categoria">
+                                <option value="ciencia">Ciencia</option>
+                                <option value="ciencia ficcion">Ciencia ficción</option>
+                                <option value="romance">Romance</option>
+                                <option value="superacion">Superación</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="paginas" class="form-label textForm">Número de páginas</label>
+                            <input type="text" class="form-control" id="paginas" placeholder="250">
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="precio" class="form-label textForm">Precio</label>
+                            <input type="text" class="form-control" id="precio" placeholder="$25">
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label textForm">Directorio o URL de imagen</label>
+                            <input type="text" class="form-control" id="direccion" placeholder="dirección">
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Ingresar</button>
+                        <button class="btn btn-primary" type="button" id="limpiar">Resetear</button>
+            </div>
+            <div class="container">
+                <div class="alert alert-danger mt-4 d-none" role="alert" id="msjAlerta">
+                </div>
+                <div class="table-responsive container text-center borderF">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Autor</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Páginas</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Dirección</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaLibro">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </form>
             </section>
         </div>
-        <div class="contenedor my-5">
-            <h1 class="display-6 my-4 text-center text-primary">Administración de libros</h1>
-            <section class="my-4 bg-light p-3 borderF">
-                <form id="formLibros">
-                    <div class="mb-3">
-                        <label for="codigo" class="form-label textForm">Código</label>
-                        <input type="text" class="form-control " id="codigo" placeholder="0001">
-                        <div class="invalid-feedback">Este campo es obligatorio</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label textForm">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="El secreto">
-                        <div class="invalid-feedback">Este campo es obligatorio</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="autor" class="form-label textForm">Autor</label>
-                        <input type="text" class="form-control" id="autor" placeholder="Pablo Medina">
-                        <div class="invalid-feedback">Este campo es obligatorio</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="categoria" class="form-label textForm">Categoría</label>
-                        <br>
-                        <select id="categoria" name="categoria">
-                            <option value="ciencia">Ciencia</option>
-                            <option value="ciencia ficcion">Ciencia ficción</option>
-                            <option value="romance">Romance</option>
-                            <option value="superacion">Superación</option>
-                        </select>
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="paginas" class="form-label textForm">Número de páginas</label>
-                        <input type="text" class="form-control" id="paginas" placeholder="250">
-                        <div class="invalid-feedback">Este campo es obligatorio</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="precio" class="form-label textForm">Precio</label>
-                        <input type="text" class="form-control" id="precio" placeholder="$25">
-                        <div class="invalid-feedback">Este campo es obligatorio</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="direccion" class="form-label textForm">Directorio o URL de imagen</label>
-                        <input type="text" class="form-control" id="direccion" placeholder="dirección">
-                        <div class="invalid-feedback">Este campo es obligatorio</div>
-                    </div>
-
-                    <button class="btn btn-primary" type="submit">Ingresar</button>
-                    <button class="btn btn-primary" type="button" id="limpiar">Resetear</button>
-        </div>
-        <div class="container">
-            <div class="alert alert-danger mt-4 d-none" role="alert" id="msjAlerta">
-            </div>
-            <div class="table-responsive container text-center borderF">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Código</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Autor</th>
-                            <th scope="col">Categoría</th>
-                            <th scope="col">Páginas</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Dirección</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaLibro">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        </form>
-        </section>
+        <div id="panel3" class="text-center container borderF my-5 d-none">
+            <img src="../images/controlIni.jpeg" alt="inicio no valido" style="width: 10%" />
+            <h4 class="my-4 text-primary">No tienes permiso de administrador</h4>
+            <h5 id="ideU" class="my-4"> </h5>
         </div>
     </main>
 

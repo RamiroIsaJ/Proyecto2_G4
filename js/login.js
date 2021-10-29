@@ -13,11 +13,12 @@ let cerrar = document.getElementById('cerrarS');
 // funciones cuando sucede un evento en el html
 idUsuario.addEventListener('blur', () => { validarCampoRequerido(idUsuario) });
 contrasena.addEventListener('blur', () => { validarCampoRequerido(contrasena) });
-cerrar.addEventListener('click', () => { cerrarSesion()});
+cerrar.addEventListener('click', () => { cerrarSesion() });
 formulario.addEventListener('submit', loginUsuario);
 let usuario = 1;
 let listaInvitados = null;
 let listaAdmins = null;
+let listaLogin = [];
 
 function definirUsuario(input) {
     for (let i = 0; i < input.length; i++) {
@@ -30,6 +31,29 @@ function definirUsuario(input) {
 const cargaInicial = () => {
     listaInvitados = JSON.parse(localStorage.getItem('listaInvitadosT')) || [];
     listaAdmins = JSON.parse(localStorage.getItem('listaAdminsT')) || [];
+    listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
+    if (listaLogin.length > 0) {
+        iniSesion(listaLogin[0]);
+    }
+}
+
+function cerrarSesion() {
+    Swal.fire({
+        title: '¿Estás seguro de cerrar sesión?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            listaLogin.splice(0, 1);
+            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
+            finSesion();
+        }
+    })
 }
 
 function loginUsuario(e) {
@@ -48,6 +72,8 @@ function loginInvitado() {
     let invitadoE = listaInvitados.find((invitado) => { return invitado.codigo == idUsuario.value });
     if (invitadoE != undefined) {
         if (invitadoE.contrasena == contrasena.value) {
+            listaLogin.push(invitadoE);
+            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
             iniSesion(invitadoE);
         } else {
             Swal.fire({
@@ -72,6 +98,8 @@ function loginAdmin() {
     let adminE = listaAdmins.find((admin) => { return admin.codigo == idUsuario.value });
     if (adminE != undefined) {
         if (adminE.contrasena == contrasena.value) {
+            listaLogin.push(adminE);
+            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
             iniSesion(adminE);
         } else {
             Swal.fire({
@@ -92,16 +120,22 @@ function loginAdmin() {
     limpiarFormulario();
 }
 
-function iniSesion(usuarioC){
+function iniSesion(usuarioC) {
     saludo.innerHTML = `Hola, ${usuarioC.codigo}`;
     panel1.className = "contenedor2 text-center my-5 d-none";
     panel2.className = "text-center container borderF my-5";
-    if (usuario ==  1){
+    if (usuario == 1) {
         panelTexto.innerHTML = `Invitado: ${usuarioC.codigo}`;
-        
-    }else{
+
+    } else {
         panelTexto.innerHTML = `Admin: ${usuarioC.codigo}`;
-    } 
+    }
+}
+
+function finSesion() {
+    saludo.innerHTML = `Iniciar sesión...`;
+    panel1.className = "contenedor2 text-center my-5";
+    panel2.className = "text-center container borderF my-5 d-none";
 }
 
 function limpiarFormulario() {

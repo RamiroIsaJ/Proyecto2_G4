@@ -10,6 +10,7 @@
   <meta name="keywords" content="objetos, clases, DOM, BOM, javascript, html">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/35e1f586d0.js" crossorigin="anonymous"></script>
   <title>Aprendamos - BS</title>
 </head>
@@ -51,11 +52,15 @@
 
   <main>
     <div class="usuarioI">
-      <section class="container">
-          <p id="iniSes" class="mb-3 mb-lg-1">Sin inicio de sesión</p>
-      </section>
-  </div>
-   
+      <div class="container">
+        <section class="row">
+          <div class="d-flex justify-content-end">
+            <p id="iniSes" class="mb-lg-1 mx-3">Iniciar de sesión...</p>
+            <button id="cerrarS" type="button" class="btn btn-danger btn-sm mb-lg-0">Cerrar</button>
+          </div>
+        </section>
+      </div>
+    </div> 
 
 
 
@@ -119,7 +124,7 @@
     </section>
   </footer>
   <script src="../js/bootstrap.min.js"></script>
-  <script type="module" src="../js/admin.js"></script>
+  <script type="module" src="../js/catalogo.js"></script>
 
 </body>
 

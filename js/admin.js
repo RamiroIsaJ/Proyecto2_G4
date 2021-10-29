@@ -12,7 +12,16 @@ let direccion = document.getElementById('direccion');
 let formulario = document.getElementById('formLibros');
 let limpiar = document.getElementById('limpiar');
 let alerta = document.getElementById('msjAlerta');
+let saludo = document.getElementById('iniSes');
+let panel1 = document.getElementById('panel1');
+let panel2 = document.getElementById('panel2');
+let panel3 = document.getElementById('panel3');
+let panel4 = document.getElementById('panel4');
+let cerrar = document.getElementById('cerrarS');
+let textoUsuario = document.getElementById('ideU');
+let textoAdmin = document.getElementById('ideA');
 let libroEncontrado = null;
+let listaLogin = null;
 let editar = false;
 let listaLibros = [];
 
@@ -24,6 +33,7 @@ paginas.addEventListener('blur', () => {validarNumeros(paginas)});
 precio.addEventListener('blur', () => {validarCampoRequerido(precio)});
 direccion.addEventListener('blur', () => { validarCampoRequerido(direccion) });
 limpiar.addEventListener('click', () => { limpiarForm() });
+cerrar.addEventListener('click', () => { cerrarSesion() });
 formulario.addEventListener('submit', guardarLibro);
 
 const crearFila = (libro) => {
@@ -70,6 +80,25 @@ window.editarLibro = (codigoE) => {
     }
 }
 
+function cerrarSesion() {
+    Swal.fire({
+        title: '¿Estás seguro de cerrar sesión?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            listaLogin.splice(0, 1);
+            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
+            finSesion();
+        }
+    })
+}
+
 function limpiarForm() {
     editar = false;
     alerta.className = "alert alert-danger mt-4 d-none";
@@ -83,6 +112,10 @@ const cargaInicial = () => {
         listaLibros.forEach((libro) => {
             crearFila(libro);
         });
+    }
+    listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
+    if (listaLogin.length > 0) {
+        iniSesion(listaLogin[0]);
     }
 }
 
@@ -149,5 +182,26 @@ function limpiarFormulario() {
     direccion.className = 'form-control';
 }
 
+function iniSesion(usuarioC) {
+    let ideUsuario = usuarioC.confirmar;
+    saludo.innerHTML = `Hola, ${usuarioC.codigo}`;
+    panel2.className = "text-center container borderF my-5 d-none";
+    if (ideUsuario  == undefined) {
+        panel3.className = "text-center container borderF my-5";
+        textoUsuario.innerHTML = `Invitado: ${usuarioC.codigo}`;
+    } else {
+        panel4.className = "text-center container borderF my-5";
+        textoAdmin.innerHTML = `Admin: ${usuarioC.codigo}`;
+        panel1.className = "";
+    }
+}
+
+function finSesion() {
+    saludo.innerHTML = `Iniciar sesión...`;
+    panel1.className = "d-none";
+    panel2.className = "text-center container borderF my-5";
+    panel3.className = "text-center container borderF my-5 d-none";
+    panel4.className = "text-center container borderF my-5 d-none";
+}
 
 cargaInicial();
