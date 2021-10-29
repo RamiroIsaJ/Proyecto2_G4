@@ -1,4 +1,5 @@
-import { validarContrasena } from "./validaciones.js";
+import {validarCampoRequerido, validarContrasena } from "./validaciones.js";
+import { UsuarioN, AdminS } from "./usuarios_class.js";
 
 let codigo = document.getElementById('codigo');
 let claveI = document.getElementById('claveI');
@@ -11,11 +12,13 @@ formulario.addEventListener('submit', editarUsuario);
 let listaAdmins = null;
 let listaInvitados = null;
 let listaUsuario = null;
+let idx = [];
+let usuarioE = [];
 
 const cargaInicial = () => {
     listaInvitados = JSON.parse(localStorage.getItem('listaInvitadosT')) || [];
     listaAdmins = JSON.parse(localStorage.getItem('listaAdminsT')) || [];
-    listaUsuario = JSON.parse(localStorage.getItem('listaUsuarioC')) || [];
+    listaUsuario = JSON.parse(localStorage.getItem('listaLoginU')) || [];
     if (listaUsuario.length > 0) {
         cargarUsuario(listaUsuario[0]);
     }
@@ -36,17 +39,19 @@ function cargarUsuario(usuarioE) {
 function actualizarContrasena() {
     let ideUsuario = listaUsuario[0].confirmar;
     if (ideUsuario == undefined) {
-        let invitadoE = listaInvitados.find((invitado) => { return invitado.codigo == codigo.value });
-        let idx = listaInvitados.indexOf(invitadoE);
+        usuarioE = listaInvitados.find((invitado) => { return invitado.codigo == codigo.value });
+        console.log(usuarioE)
+        idx = listaInvitados.indexOf(usuarioE);
         if (claveI.value == claveC.value) {
-            invitadoE.nuevaContrasena = claveI.value;
-            listaInvitados[idx] = invitadoE;
+            usuarioE.contrasena = claveI.value;
+            listaInvitados[idx] = usuarioE;
             localStorage.setItem('listaInvitadosT', JSON.stringify(listaInvitados));
             Swal.fire(
                 'Buen trabajo',
                 'Se actualizó la contraseña',
                 'success'
             )
+            borrarUsuario();
             limpiarFormulario();
         } else {
             Swal.fire({
@@ -57,17 +62,18 @@ function actualizarContrasena() {
             })
         }
     } else {
-        let adminE = listaAdmins.find((admin) => { return admin.codigo == codigo.value });
-        let idx = listaAdmins.indexOf(adminE);
+        usuarioE = listaAdmins.find((admin) => { return admin.codigo == codigo.value });
+        idx = listaAdmins.indexOf(usuarioE);
         if (claveI.value == claveC.value) {
-            adminE.nuevaContrasena = claveI.value;
-            listaAdmins[idx] = adminE;
+            usuarioE.contrasena = claveI.value;
+            listaAdmins[idx] = usuarioE;
             localStorage.setItem('listaAdminsT', JSON.stringify(listaAdmins));
             Swal.fire(
                 'Buen trabajo',
                 'Se actualizó la contraseña',
                 'success'
-            )
+            );
+            borrarUsuario();
             limpiarFormulario();
         } else {
             Swal.fire({
@@ -79,6 +85,11 @@ function actualizarContrasena() {
         }
 
     }
+}
+
+function borrarUsuario(){
+    listaUsuario.splice(0, 1);
+    localStorage.setItem('listaLoginU', JSON.stringify(listaUsuario));
 }
 
 function limpiarFormulario() {

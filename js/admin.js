@@ -56,13 +56,21 @@ const crearFila = (libro) => {
 
 window.borrarLibro = (codigoE) => {
     let idx = listaLibros.indexOf(listaLibros.find((libro) => {return libro.codigo == codigoE}));
-    if (idx!= undefined) {
-        let resp = confirm("¿ Estás seguro de eliminar el producto?");
-        if (resp) {
+    Swal.fire({
+        title: '¿Estás seguro de eliminar el libro?',
+        text: "No se podrá recuperar los datos",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
             listaLibros.splice(idx, 1);
             localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
         }
-    }
+    })
 }
 
 window.editarLibro = (codigoE) => {
