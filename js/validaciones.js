@@ -58,7 +58,7 @@ export function validarCampoRequerido(input){
 export function validarGeneralP(){
     let alerta = document.getElementById('msjAlerta');
     if (validarCodigo(codigo) && validarCampoRequerido(nombre) && validarCampoRequerido(autor) && validarNumeros(paginas) 
-        && validarCampoRequerido(direccion) ){
+    && validarCampoRequerido(precio) && validarCampoRequerido(direccion) ){
         alerta.className = "alert alert-danger mt-4 d-none";
         return true;
     }else{

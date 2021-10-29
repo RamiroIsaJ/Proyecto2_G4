@@ -7,6 +7,7 @@ let nombre = document.getElementById('nombre');
 let autor = document.getElementById('autor');
 let categoria = document.getElementById('categoria');
 let paginas = document.getElementById('paginas');
+let precio = document.getElementById('precio');
 let direccion = document.getElementById('direccion');
 let formulario = document.getElementById('formLibros');
 let limpiar = document.getElementById('limpiar');
@@ -16,10 +17,11 @@ let editar = false;
 let listaLibros = [];
 
 // funciones cuando sucede un evento en el html
-codigo.addEventListener('blur', () => { validarCodigo(codigo)});
-nombre.addEventListener('blur', () => { validarCampoRequerido(nombre)});
-autor.addEventListener('blur', () => { validarCampoRequerido(autor)});
-paginas.addEventListener('blur', () => { validarNumeros(paginas)});
+codigo.addEventListener('blur', () => {validarCodigo(codigo)});
+nombre.addEventListener('blur', () => {validarCampoRequerido(nombre)});
+autor.addEventListener('blur', () => {validarCampoRequerido(autor)});
+paginas.addEventListener('blur', () => {validarNumeros(paginas)});
+precio.addEventListener('blur', () => {validarCampoRequerido(precio)});
 direccion.addEventListener('blur', () => { validarCampoRequerido(direccion) });
 limpiar.addEventListener('click', () => { limpiarForm() });
 formulario.addEventListener('submit', guardarLibro);
@@ -33,6 +35,7 @@ const crearFila = (libro) => {
     <td>${libro.autor}</td>
     <td>${libro.categoria}</td>
     <td>${libro.paginas}</td>
+    <td>${libro.precio}</td>
     <td>${libro.direccion}</td>
     <td>
       <button type="button" class="btn btn-warning" onclick="editarLibro(${libro.codigo});">Editar</button>
@@ -62,6 +65,7 @@ window.editarLibro = (codigoE) => {
         autor.value = `${libroEncontrado.autor}`;
         categoria.value = `${libroEncontrado.categoria}`;
         paginas.value = `${libroEncontrado.paginas}`;
+        precio.value = `${libroEncontrado.precio}`;
         direccion.value = `${libroEncontrado.direccion}`;
     }
 }
@@ -75,7 +79,6 @@ function limpiarForm() {
 
 const cargaInicial = () => {
     listaLibros = JSON.parse(localStorage.getItem('listaLibrosT')) || [];
-    console.log(listaLibros)
     if (listaLibros.length > 0) {
         listaLibros.forEach((libro) => {
             crearFila(libro);
@@ -98,6 +101,7 @@ function ingresarLibro() {
         libroEncontrado.autor = autor.value;
         libroEncontrado.categoria = categoria.value;
         libroEncontrado.paginas = paginas.value;
+        libroEncontrado.precio = precio.value;
         libroEncontrado.direccion = direccion.value;
         // asignar al array la modificación
         listaLibros[idx] = libroEncontrado;
@@ -115,6 +119,7 @@ function ingresarLibro() {
             nuevoLibro.nuevoAutor = autor.value;
             nuevoLibro.nuevaCategoria = categoria.value;
             nuevoLibro.nuevasPaginas = paginas.value;
+            nuevoLibro.nuevoPrecio = precio.value;
             nuevoLibro.nuevaDireccion = direccion.value;
             // agregar a la lista de productos
             listaLibros.push(nuevoLibro);
@@ -140,6 +145,7 @@ function limpiarFormulario() {
     nombre.className = 'form-control';
     autor.className = 'form-control';
     paginas.className = 'form-control';
+    precio.className = 'form-control';
     direccion.className = 'form-control';
 }
 

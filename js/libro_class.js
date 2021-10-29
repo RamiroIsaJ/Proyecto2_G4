@@ -6,6 +6,7 @@ export class LibroN{
         this.categoria = null;
         this.paginas = null;
         this.direccion = null;
+        this.precio = null;
     }
 
     set nuevoCodigo(codigo){
@@ -26,6 +27,9 @@ export class LibroN{
     set nuevaDireccion(direccion){
         this.direccion = direccion;
     }
+    set nuevoPrecio(precio){
+        this.precio = precio;
+    }
 
     get mostrarCodigo(){
         return this.codigo;
@@ -44,6 +48,9 @@ export class LibroN{
     }
     get mostrarDireccion(){
         return this.direccion;
+    }
+    get mostrarPrecio(){
+        return this.precio;
     }
 
 }
