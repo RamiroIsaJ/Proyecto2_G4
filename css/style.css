@@ -32,9 +32,8 @@
 
 .usuarioI{
     border: 1px solid rgb(196, 194, 194);
-    text-align: right;
     font-family: 'Lobster Two', cursive;
-    color: royalblue;
+    color: rgb(79, 79, 82);
 }
 
 .textForm{
