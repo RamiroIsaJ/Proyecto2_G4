@@ -102,3 +102,11 @@ export function validarLogin(){
         return false;
     }
 }
+
+export function validarContrasena(){
+    if (validarCampoRequerido(claveC) && validarCampoRequerido(claveI)){
+        return true;
+    }else{
+        return false;
+    }
+}

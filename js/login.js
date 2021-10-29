@@ -9,16 +9,19 @@ let panel1 = document.getElementById('panel1');
 let panel2 = document.getElementById('panel2');
 let panelTexto = document.getElementById('nombreU');
 let cerrar = document.getElementById('cerrarS');
+let editarC = document.getElementById('editarC');
 
 // funciones cuando sucede un evento en el html
 idUsuario.addEventListener('blur', () => { validarCampoRequerido(idUsuario) });
 contrasena.addEventListener('blur', () => { validarCampoRequerido(contrasena) });
 cerrar.addEventListener('click', () => { cerrarSesion() });
+editarC.addEventListener('click', () => { editarContrasena() });
 formulario.addEventListener('submit', loginUsuario);
 let usuario = 1;
 let listaInvitados = null;
 let listaAdmins = null;
 let listaLogin = [];
+let listaUsuario = [];
 
 function definirUsuario(input) {
     for (let i = 0; i < input.length; i++) {
@@ -76,6 +79,8 @@ function loginInvitado() {
             localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
             iniSesion(invitadoE);
         } else {
+            listaUsuario.push(invitadoE);
+            localStorage.setItem('listaUsuarioC', JSON.stringify(listaUsuario));
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -102,6 +107,8 @@ function loginAdmin() {
             localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
             iniSesion(adminE);
         } else {
+            listaUsuario.push(adminE);
+            localStorage.setItem('listaUsuarioC', JSON.stringify(listaUsuario));
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
