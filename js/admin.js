@@ -9,10 +9,9 @@ let categoria = document.getElementById('categoria');
 let paginas = document.getElementById('paginas');
 let direccion = document.getElementById('direccion');
 let formulario = document.getElementById('formLibros');
-let listaTotal = document.getElementById('listaTotal');
 let limpiar = document.getElementById('limpiar');
-let editar = false;
 let libroEncontrado = null;
+let editar = false;
 let listaLibros = [];
 
 // funciones cuando sucede evento blur en el html
@@ -36,9 +35,20 @@ const crearFila = (libro) => {
     <td>${libro.direccion}</td>
     <td>
       <button type="button" class="btn btn-warning" onclick="editarLibro(${libro.codigo});">Editar</button>
-      <button type="button" class="btn btn-danger" onclick="eliminarLibro(${libro.codigo});">Borrar</button>
+      <button type="button" class="btn btn-danger" onclick="borrarLibro(${libro.codigo});">Borrar</button>
     </td>
   </tr>`;
+}
+
+window.borrarLibro = (codigoE) => {
+    let idx = listaLibros.indexOf(listaLibros.find((libro) => {return libro.codigo == codigoE}));
+    if (idx!= undefined) {
+        let resp = confirm("¿ Estás seguro de eliminar el producto?");
+        if (resp) {
+            listaLibros.splice(idx, 1);
+            localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
+        }
+    }
 }
 
 window.editarLibro = (codigoE) => {
@@ -58,7 +68,6 @@ window.editarLibro = (codigoE) => {
 function limpiarForm() {
     editar = false;
     limpiarFormulario();
-
 }
 
 const cargaInicial = () => {
@@ -76,14 +85,7 @@ function guardarLibro(e) {
     e.preventDefault();
     if (validarGeneralP()) {
         ingresarLibro();
-    } else {
-        console.log('Incorrecto');
     }
-
-}
-
-function limpiarLista() {
-    listaTotal.innerHTML = "";
 }
 
 function ingresarLibro() {
@@ -103,7 +105,7 @@ function ingresarLibro() {
             'success'
         )
     }else {
-        let libroBuscado = listaLibros.find((libro) => { return libro.codigo == codigo.value });
+        let libroBuscado = listaLibros.find((libro) => {return libro.codigo == codigo.value });
         if (libroBuscado == undefined) {
             let nuevoLibro = new LibroN();
             nuevoLibro.nuevoCodigo = codigo.value;
