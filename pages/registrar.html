@@ -54,33 +54,51 @@
     <section class="my-4 bg-light p-3 borderF">
       <form id="formPersonas">
         <div class="mb-3">
-          <label for="codigo" class="form-label">ID usuario</label>
+          <label for="codigo" class="form-label textForm">ID usuario</label>
           <input type="text" class="form-control" id="codigo" placeholder="ramiro">
           <div class="invalid-feedback">Este campo es obligatorio</div>
         </div>
         <div class="mb-3">
-          <label for="correo" class="form-label">Correo electrónico</label>
+          <label for="correo" class="form-label textForm">Correo electrónico</label>
           <input type="email" class="form-control" id="correo" placeholder="ramiro@gmail.com">
           <div class="invalid-feedback">Este campo es obligatorio</div>
         </div>
         <div class="mb-3">
-          <label for="anio" class="form-label">Año de nacimiento</label>
+          <label for="anio" class="form-label textForm">Año de nacimiento</label>
           <input type="text" class="form-control" id="anio" placeholder="1986">
           <div class="invalid-feedback">Este campo es obligatorio</div>
         </div>
         <div class="mb-3">
-          <label for="password1" class="form-label">Contraseña</label>
+          <div>
+            <label for="usuarios" class="form-label textForm">Tipo de usuario</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="usuarios" value="1" checked>
+            <label class="form-check-label " for="invitado"> Invitado </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="usuarios" value="0">
+            <label class="form-check-label" for="admin">Admin</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="confirmacion" class="form-label textForm">Clave del sistema</label>
+          <input type="password" class="form-control" id="confirmacion" placeholder="**************" maxlength="20" disabled>
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="mb-3">
+          <label for="password1" class="form-label textForm">Contraseña</label>
           <input type="password" class="form-control" id="password1" placeholder="**************" maxlength="20">
           <div class="invalid-feedback">Este campo es obligatorio</div>
         </div>
         <div class="mb-3">
-          <label for="password2" class="form-label">Confirmar contraseña</label>
+          <label for="password2" class="form-label textForm">Confirmar contraseña</label>
           <input type="password" class="form-control" id="password2" placeholder="**************" maxlength="20">
           <div class="invalid-feedback">Este campo es obligatorio</div>
         </div>
-  
+
         <button class="btn btn-primary" type="submit">Registrarse</button>
-        <button class="btn btn-primary" type="button" onclick="limpiarForm();">Limpiar</button>
+        <button class="btn btn-primary" type="button" id="limpiar">Resetear</button>
         </div>
 
         <div class="alert alert-danger mt-4 d-none" role="alert" id="msjAlerta">

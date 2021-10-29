@@ -16,10 +16,10 @@ let editar = false;
 let listaLibros = [];
 
 // funciones cuando sucede un evento en el html
-codigo.addEventListener('blur', () => { validarCodigo(codigo) });
-nombre.addEventListener('blur', () => { validarCampoRequerido(nombre) });
-autor.addEventListener('blur', () => { validarCampoRequerido(autor) });
-paginas.addEventListener('blur', () => { validarNumeros(paginas) });
+codigo.addEventListener('blur', () => { validarCodigo(codigo)});
+nombre.addEventListener('blur', () => { validarCampoRequerido(nombre)});
+autor.addEventListener('blur', () => { validarCampoRequerido(autor)});
+paginas.addEventListener('blur', () => { validarNumeros(paginas)});
 direccion.addEventListener('blur', () => { validarCampoRequerido(direccion) });
 limpiar.addEventListener('click', () => { limpiarForm() });
 formulario.addEventListener('submit', guardarLibro);

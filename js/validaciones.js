@@ -79,5 +79,12 @@ export function validarGeneralU(){
         alerta.innerHTML = "No se puede ingresar. Datos incorrectos.!";
         return false;
     }
-    
+}
+
+export function validarLogin(){
+    if (validarCampoRequerido(usuario) && validarCampoRequerido(password)){
+        return true;
+    }else{
+        return false;
+    }
 }

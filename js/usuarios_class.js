@@ -33,3 +33,18 @@ export class UsuarioN{
     }
 
 }
+
+export class AdminS extends UsuarioN{
+    constructor(){
+        this.confirmar = "12345";
+    }
+
+    confirmarAdmin(clave){
+        if(clave === this.confirmar){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+}

@@ -60,16 +60,22 @@
       <section class="my-4 bg-light p-3 borderF">
         <form id="formPersonas">
           <div class="my-3 mb-3">
-            <input type="text" id="usuario" placeholder="ID usuario" maxlength="20" required>
+            <input type="text" id="usuario" class="form-control" placeholder="ID usuario" maxlength="20" required>
             <div class="invalid-feedback">Este campo es obligatorio</div>
           </div>
           <div class="mb-3">
-            <input type="password" id="password_" placeholder="**************" maxlength="20" required>
+            <input type="password" id="password" class="form-control" placeholder="**************" maxlength="20" required>
             <div class="invalid-feedback">Este campo es obligatorio</div>
           </div>
           <div class="mb-3">
-            <input type="checkbox">
-            <label> No cerrar sesión </label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="usuarios" value="0" checked>
+              <label class="form-check-label" for="admin">Admin</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="usuarios" value="1">
+              <label class="form-check-label" for="invitado"> Invitado </label>
+            </div>
           </div>
           <div class="mb-3">
             <button class="btn btn-primary" type="submit">Iniciar sesión</button>
@@ -157,7 +163,7 @@
     </section>
   </footer>
   <script src="../js/bootstrap.min.js"></script>
-  <script type="module" src="../js/admin.js"></script>
+  <script type="module" src="../js/login.js"></script>
 
 </body>
 
