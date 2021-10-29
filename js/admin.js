@@ -1,138 +1,146 @@
-import {validarCampoRequerido, validarNumeros, validarAnio, validarGeneral} from "./validaciones.js";
-import {PersonaN} from "./persona_class.js";
+import { validarCodigo, validarCampoRequerido, validarNumeros, validarGeneralP } from "./validaciones.js";
+import { LibroN } from "./libro_class.js";
 
 //traer los campos a validar
+let codigo = document.getElementById('codigo');
 let nombre = document.getElementById('nombre');
-let radio = document.querySelectorAll('input[name="sexo"]');
-let peso = document.querySelector('#peso');
-let altura = document.getElementById('altura');
-let anio = document.getElementById('anio');
-let formulario = document.getElementById('formPersonas');
-let generacion = document.getElementById('genera');
-let mayor = document.getElementById('mayor');
-let mostrar = document.getElementById('mostrar');
-
+let autor = document.getElementById('autor');
+let categoria = document.getElementById('categoria');
+let paginas = document.getElementById('paginas');
+let direccion = document.getElementById('direccion');
+let formulario = document.getElementById('formLibros');
 let listaTotal = document.getElementById('listaTotal');
-let listaPersonas = [];
+let limpiar = document.getElementById('limpiar');
+let editar = false;
+let libroEncontrado = null;
+let listaLibros = [];
 
 // funciones cuando sucede evento blur en el html
-nombre.addEventListener('blur', () => {validarCampoRequerido(nombre)});
-peso.addEventListener('blur', () => {validarNumeros(peso)});
-altura.addEventListener('blur', () => {validarNumeros(altura)});
-anio.addEventListener('blur', () => {validarAnio(anio)});
-formulario.addEventListener('submit',  guardarPersona);
+codigo.addEventListener('blur', () => { validarCodigo(codigo) });
+nombre.addEventListener('blur', () => { validarCampoRequerido(nombre) });
+autor.addEventListener('blur', () => { validarCampoRequerido(autor) });
+paginas.addEventListener('blur', () => { validarNumeros(paginas) });
+direccion.addEventListener('blur', () => { validarCampoRequerido(direccion) });
+limpiar.addEventListener('click', () => { limpiarForm() });
+formulario.addEventListener('submit', guardarLibro);
 
-let sexo = "Hombre";
-function definirSexo(contact){
-    for (let i = 0; i < contact.length; i++) {
-       contact[i].addEventListener('change', function(event){                          
-            let val = this.value;
-            if (val == 0){
-                sexo = "Hombre";
-            }else if (val == 1){
-                sexo = "Mujer";
-            }
-        });         
+const crearFila = (libro) => {
+    let tabla = document.getElementById("tablaLibro");
+    tabla.innerHTML += `              
+    <tr>
+    <th scope="row">${libro.codigo}</th>
+    <td>${libro.nombre}</td>
+    <td>${libro.autor}</td>
+    <td>${libro.categoria}</td>
+    <td>${libro.paginas}</td>
+    <td>${libro.direccion}</td>
+    <td>
+      <button type="button" class="btn btn-warning" onclick="editarLibro(${libro.codigo});">Editar</button>
+      <button type="button" class="btn btn-danger" onclick="eliminarLibro(${libro.codigo});">Borrar</button>
+    </td>
+  </tr>`;
+}
+
+window.editarLibro = (codigoE) => {
+    editar = true;
+    libroEncontrado = listaLibros.find((libro) => { return libro.codigo == codigoE });
+    if (libroEncontrado != undefined) {
+        codigo.disabled = true;
+        codigo.value = `${libroEncontrado.codigo}`;
+        nombre.value = `${libroEncontrado.nombre}`;
+        autor.value = `${libroEncontrado.autor}`;
+        categoria.value = `${libroEncontrado.categoria}`;
+        paginas.value = `${libroEncontrado.paginas}`;
+        direccion.value = `${libroEncontrado.direccion}`;
     }
 }
 
-const crearLista = (pers) =>{
-    let contenedor = document.createElement('div');
-    let cardPers = `<div class="card">
-    <div class="card-header">
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">${pers.nombre}</h5>
-      <p class="card-text">La persona es ${pers.sexo}, tiene ${pers.edad} años de edad. Su peso es de 
-      ${pers.peso} kg. y su altura de ${pers.altura} cm.</p>
-    </div>
-  </div>`;
-
-  contenedor.innerHTML = cardPers;
-  listaTotal.appendChild(contenedor);
+function limpiarForm() {
+    editar = false;
+    limpiarFormulario();
 
 }
 
-const cargaInicial = () =>{
-    listaPersonas = JSON.parse(localStorage.getItem('listaPersonasF')) || [];
-
+const cargaInicial = () => {
+    listaLibros = JSON.parse(localStorage.getItem('listaLibrosT')) || [];
+    console.log(listaLibros)
+    if (listaLibros.length > 0) {
+        listaLibros.forEach((libro) => {
+            // crearLista(product); 
+            crearFila(libro);
+        });
+    }
 }
 
-function guardarPersona(e){
+function guardarLibro(e) {
     e.preventDefault();
-    if (validarGeneral()){
-        definirSexo(radio);
-        let persona = agregarPersona();
-        listaPersonas.push(persona);
-        // guardar en localstorage previo a la base de datos
-        localStorage.setItem('listaPersonasF', JSON.stringify(listaPersonas));
-
-        generacion.className = "btn btn-primary";
-        generacion.addEventListener('click', () => {obtenerGeneracion(persona)});
-        mayor.className = "btn btn-primary";
-        mayor.addEventListener('click', () => {obtenerMayor(persona)});
-        mostrar.className = "btn btn-primary";
-        mostrar.addEventListener('click', () => {mostrarTodos(listaPersonas)});
-        console.log('Correcto');
-
-        limpiarFormulario();
-        limpiarLista();
-    }else{
+    if (validarGeneralP()) {
+        ingresarLibro();
+    } else {
         console.log('Incorrecto');
     }
 
 }
 
-function limpiarLista(){
+function limpiarLista() {
     listaTotal.innerHTML = "";
 }
 
-function mostrarTodos(listaPersonas){
-    if (listaPersonas.length > 0){
-        listaPersonas.forEach((persona) => {
-            crearLista(persona); 
-        });
-        generacion.className = "btn btn-primary disabled";
-        mayor.className = "btn btn-primary disabled";
-        mostrar.className = "btn btn-primary disabled";
+function ingresarLibro() {
+    if (editar) {
+        let idx = listaLibros.indexOf(libroEncontrado);
+        libroEncontrado.codigo = codigo.value;
+        libroEncontrado.nombre = nombre.value;
+        libroEncontrado.autor = autor.value;
+        libroEncontrado.categoria = categoria.value;
+        libroEncontrado.paginas = paginas.value;
+        libroEncontrado.direccion = direccion.value;
+        // asignar al array la modificación
+        listaLibros[idx] = libroEncontrado;
+        Swal.fire(
+            'Buen trabajo',
+            'Se editó el libro correctamente',
+            'success'
+        )
+    }else {
+        let libroBuscado = listaLibros.find((libro) => { return libro.codigo == codigo.value });
+        if (libroBuscado == undefined) {
+            let nuevoLibro = new LibroN();
+            nuevoLibro.nuevoCodigo = codigo.value;
+            nuevoLibro.nuevoNombre = nombre.value;
+            nuevoLibro.nuevoAutor = autor.value;
+            nuevoLibro.nuevaCategoria = categoria.value;
+            nuevoLibro.nuevasPaginas = paginas.value;
+            nuevoLibro.nuevaDireccion = direccion.value;
+            // agregar a la lista de productos
+            listaLibros.push(nuevoLibro);
+            Swal.fire(
+                'Buen trabajo',
+                'Se agregó el producto correctamente',
+                'success'
+            )
+        }else {
+            let alerta = document.getElementById('msjAlerta');
+            alerta.className = "alert alert-danger mt-4";
+            alerta.innerHTML = "No se puede ingresar. El código ya existe !!";
+        }
     }
-
+    // guardar en localstorage previo a la base de datos
+    localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
+    limpiarFormulario();
 }
 
-function obtenerGeneracion(persona){
-    let msj = persona.mostrarGeneracion();
-    let alerta = document.getElementById('msjAlerta');
-    alerta.className = "alert alert-danger mt-4";
-    alerta.innerHTML = msj;
-
-}
-
-function obtenerMayor(persona){
-    let msj = persona.esMayor();
-    let alerta = document.getElementById('msjAlerta');
-    alerta.className = "alert alert-danger mt-4";
-    alerta.innerHTML = msj;
-
-}
-
-function agregarPersona(){
-    let nuevaPersona = new PersonaN();
-    nuevaPersona.nuevoNombre = nombre.value;
-    nuevaPersona.nuevoSexo =  sexo;
-    nuevaPersona.nuevoPeso = peso.value;
-    nuevaPersona.nuevaAltura = altura.value;
-    nuevaPersona.nuevoAnio = anio.value;
-    nuevaPersona.calcularEdad();
-    return nuevaPersona;
-}
-
-function limpiarFormulario(){
+function limpiarFormulario() {
     formulario.reset();
-
+    codigo.disabled = false;
+    codigo.className = 'form-control';
     nombre.className = 'form-control';
-    peso.className = 'form-control';
-    altura.className = 'form-control';
-    anio.className = 'form-control';
+    autor.className = 'form-control';
+    paginas.className = 'form-control';
+    direccion.className = 'form-control';
+    alerta.className = "alert alert-danger mt-4 d-none";
+    alerta.innerHTML = "";
 }
+
 
 cargaInicial();

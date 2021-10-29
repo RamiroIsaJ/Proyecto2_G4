@@ -5,6 +5,7 @@ export class LibroN{
         this.autor = null;
         this.categoria = null;
         this.paginas = null;
+        this.direccion = null;
     }
 
     set nuevoCodigo(codigo){
@@ -22,6 +23,9 @@ export class LibroN{
     set nuevasPaginas(paginas){
         this.paginas = paginas;
     }
+    set nuevaDireccion(direccion){
+        this.direccion = direccion;
+    }
 
     get mostrarCodigo(){
         return this.codigo;
@@ -37,6 +41,9 @@ export class LibroN{
     }
     get mostrarPaginas(){
         return this.paginas;
+    }
+    get mostrarDireccion(){
+        return this.direccion;
     }
 
 }

@@ -1,5 +1,8 @@
-export function validarCampoRequerido(input){
-    if (input.value.trim().length > 0){
+// script para validar los campos de los formularios
+// mediante expresiones regulares
+
+export function validarCodigo(input){
+    if (input.value.trim() != "" && input.value.trim().length >= 3){
         input.className = 'form-control is-valid';
         return true;
     }else{
@@ -8,7 +11,7 @@ export function validarCampoRequerido(input){
     }
 }
 
-// expresiones regulares
+
 export function validarNumeros(input){
     let patron = /^[0-9]{2,3}$/;
     if (patron.test(input.value)){
@@ -31,13 +34,49 @@ export function validarAnio(input){
     }
 }
 
-export function validarGeneral(){
+export function validarCorreo(input){
+    let patron = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (patron.test(input.value)){
+        input.className = 'form-control is-valid';
+        return true;
+    }else{
+        input.className = 'form-control is-invalid';
+        return false;
+    }
+}
+
+export function validarCampoRequerido(input){
+    if (input.value.trim().length > 0){
+        input.className = 'form-control is-valid';
+        return true;
+    }else{
+        input.className = 'form-control is-invalid';
+        return false;
+    }
+}
+
+export function validarGeneralP(){
+    let alerta = document.getElementById('msjAlerta');
+    if (validarCodigo(codigo) && validarCampoRequerido(nombre) && validarCampoRequerido(autor) && validarNumeros(paginas) 
+        && validarCampoRequerido(direccion) ){
+        alerta.className = "alert alert-danger mt-4 d-none";
+        return true;
+    }else{
+        alerta.className = "alert alert-danger mt-4";
+        alerta.innerHTML = "No se puede ingresar. Datos incorrectos.!";
+        return false;
+    }
+    
+}
+
+export function validarGeneralU(){
     let alerta = document.getElementById('msjAlerta');
     if (validarCampoRequerido(nombre) && validarNumeros(peso) && validarNumeros(altura) && validarAnio(anio)){
         alerta.className = "alert alert-danger mt-4 d-none";
         return true;
     }else{
         alerta.className = "alert alert-danger mt-4";
+        alerta.innerHTML = "No se puede ingresar. Datos incorrectos.!";
         return false;
     }
     

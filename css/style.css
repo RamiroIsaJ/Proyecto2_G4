@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap');
 
 .textIni{
     font-family: 'Lobster Two', cursive;
@@ -36,6 +36,11 @@
     font-family: 'Lobster Two', cursive;
     color: royalblue;
 }
+
+.textForm{
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
 @media (max-width: 992px){
     .contenedor{
         width: 80%;
