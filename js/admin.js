@@ -10,11 +10,12 @@ let paginas = document.getElementById('paginas');
 let direccion = document.getElementById('direccion');
 let formulario = document.getElementById('formLibros');
 let limpiar = document.getElementById('limpiar');
+let alerta = document.getElementById('msjAlerta');
 let libroEncontrado = null;
 let editar = false;
 let listaLibros = [];
 
-// funciones cuando sucede evento blur en el html
+// funciones cuando sucede un evento en el html
 codigo.addEventListener('blur', () => { validarCodigo(codigo) });
 nombre.addEventListener('blur', () => { validarCampoRequerido(nombre) });
 autor.addEventListener('blur', () => { validarCampoRequerido(autor) });
@@ -67,6 +68,8 @@ window.editarLibro = (codigoE) => {
 
 function limpiarForm() {
     editar = false;
+    alerta.className = "alert alert-danger mt-4 d-none";
+    alerta.innerHTML = "";
     limpiarFormulario();
 }
 
@@ -75,7 +78,6 @@ const cargaInicial = () => {
     console.log(listaLibros)
     if (listaLibros.length > 0) {
         listaLibros.forEach((libro) => {
-            // crearLista(product); 
             crearFila(libro);
         });
     }
@@ -122,7 +124,6 @@ function ingresarLibro() {
                 'success'
             )
         }else {
-            let alerta = document.getElementById('msjAlerta');
             alerta.className = "alert alert-danger mt-4";
             alerta.innerHTML = "No se puede ingresar. El código ya existe !!";
         }
@@ -140,8 +141,6 @@ function limpiarFormulario() {
     autor.className = 'form-control';
     paginas.className = 'form-control';
     direccion.className = 'form-control';
-    alerta.className = "alert alert-danger mt-4 d-none";
-    alerta.innerHTML = "";
 }
 
 
