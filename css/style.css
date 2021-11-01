@@ -54,6 +54,9 @@
     text-align: center;
     justify-content: center;
 }
+.rob1{
+    border-radius: 5%;
+}
 /* Estilo del modo oscuro */
 .oscuro{
    display: flex;
@@ -145,6 +148,7 @@ input:checked + .slider::before{
     }
     .rob1{
         width: 80vw;
+        border-radius: 5%;
     }
     .cardsobre{
         margin: 20px auto;
@@ -187,6 +191,9 @@ input:checked + .slider::before{
         text-align: center;
         justify-content: center;
     }
+    .rob1{
+        border-radius: 5%;
+    }
 }
 @media (max-width: 576px){
     .contenedor{
@@ -210,6 +217,7 @@ input:checked + .slider::before{
     }
     .rob1{
         width: 90vw;
+        border-radius: 5%;
     }
     .cardsobre{
         margin: 20px auto;
