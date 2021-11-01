@@ -122,10 +122,10 @@ input:checked + .slider::before{
     color: rgba(241, 235, 235, 0.925);
 }
 .cambio-color-section{
-    background-color: rgba(24, 24, 24, 0.87);
+    background-color: rgba(24, 24, 24, 0.87)!important;
     color: rgba(241, 235, 235, 0.925);
 }
-
+ 
 /*fin de estilo modo oscuro*/
 @media (max-width: 992px){
     .contenedor{

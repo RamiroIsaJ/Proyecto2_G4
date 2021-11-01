@@ -3,7 +3,8 @@ const storage = window.localStorage
 const check = document.querySelector('.botonespacio')
 const body = document.querySelector('.body')
 const card = document.querySelectorAll("div[class = 'card-body']")
-console.log(card)
+const section = document.querySelector('.section')
+
 let oscuro = Boolean(storage.getItem('oscuro'))
 
 const comprobarOscuro = oscuro => {
@@ -12,14 +13,14 @@ const comprobarOscuro = oscuro => {
     for (const i of card) {
       i.classList.add('cambio-color-card')
     }
-    
+    section.classList.add('cambio-color-section')
     check.checked = true
   }else{
     body.classList.remove('cambio-color')
     for (const i of card) {
       i.classList.remove('cambio-color-card')
     }
-    
+    /* section.classList.remove('cambio-color-section') */
     check.checked = false
   }
 }
@@ -31,6 +32,7 @@ check.addEventListener('click', function(){
     for (const i of card) {
       i.classList.add('cambio-color-card')
     }
+    section.classList.add('cambio-color-section')
     storage.setItem('oscuro', true)
     
   }else{
@@ -38,7 +40,7 @@ check.addEventListener('click', function(){
     for (const i of card) {
       i.classList.remove('cambio-color-card')
     }
-    
+    section.classList.remove('cambio-color-section')
     storage.removeItem('oscuro')
   }
 }
