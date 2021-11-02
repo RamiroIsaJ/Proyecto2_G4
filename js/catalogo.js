@@ -102,6 +102,8 @@ function crearColumna(libro) {
 </div>`;
 }
 
+let listaPrecios= []
+
 
 window.agregarCarrito = (nombre,precio) => {
     console.log(nombre,precio)
@@ -109,8 +111,20 @@ window.agregarCarrito = (nombre,precio) => {
     let carrito = document.querySelector("#tarjetaCarrito");
   carrito.innerHTML += `
           <h5 class="card-title mt-1">${nombre}</h5>
-          <p class="card-text">${precio}</p>
+          <p class="card-text" >${precio}</p>
           <hr>`
+
+        listaPrecios.push(precio)
+          let total= document.querySelector("#totalCarrito")
+
+          
+         
+          total.innerHTML += ` <h5 class="card-title mt-1">Total= $${listaPrecios}</h5>`
+
+          
+         
+
+
 
          
 }
