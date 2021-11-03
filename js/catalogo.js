@@ -20,7 +20,7 @@ const cargaInicial = () => {
     }
 }
 
-function iniciarSesion(){
+function iniciarSesion() {
     location.href = "/pages/login.html";
 
 }
@@ -29,31 +29,43 @@ const inicioOK = () => {
     listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
     if (listaLogin.length > 0) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
 function cerrarSesion() {
-    Swal.fire({
-        title: '¿Estás seguro de cerrar sesión?',
-        text: "",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si',
-        cancelButtonText: 'No'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            if (listaLogin.length > 0) {
-                listaLogin.splice(0, 1);
-                localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
-                finSesion();
-                location.href = "../index.html";
-            }      
-        }
-    })
+    let OK = inicioOK();
+    if (OK) {
+        Swal.fire({
+            title: '¿Estás seguro de cerrar sesión?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (listaLogin.length > 0) {
+                    listaLogin.splice(0, 1);
+                    localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
+                    finSesion();
+                    location.href = "../index.html";
+                }
+            }
+        })
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No has iniciado sesion',
+            footer: '<a href="">Why do I have this issue?</a>'
+        }).then(function () {
+            location.href = "/pages/login.html";
+        });
+    }
     cargaInicial();
 }
 
@@ -115,23 +127,23 @@ function crearColumna(libro) {
 
 window.agregarCarrito = (nombre, precio) => {
     let OK = inicioOK();
-    if (OK){
+    if (OK) {
         let carrito = document.querySelector("#tarjetaCarrito");
         let total = document.querySelector("#totalCarrito")
         carrito.innerHTML += `
               <h5 class="card-title mt-1">${nombre}</h5>
               <p class="card-text" >${precio}</p>
               <hr>`;
-    
+
         totalCompra += parseFloat(precio);
         total.innerHTML = ` <h5 class="card-title mt-1">Total= $${totalCompra}</h5>`;
-    }else{
+    } else {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Para comprar debes inciar sesión',
             footer: '<a href="">Why do I have this issue?</a>'
-        }).then(function() {
+        }).then(function () {
             location.href = "/pages/login.html";
         });
     }
