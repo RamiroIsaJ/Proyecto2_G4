@@ -32,8 +32,7 @@ function iniSesion(usuarioC) {
 }
 
 function cerrarSesion() {
-    let OK = inicioOK();
-    if (OK){
+    if (inicioOK()){
         Swal.fire({
             title: '¿Estás seguro de cerrar sesión?',
             text: "",

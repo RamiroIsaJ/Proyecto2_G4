@@ -95,7 +95,17 @@ function iniciarSesion(){
 
 }
 
+const inicioOK = () => {
+    listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
+    if (listaLogin.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function cerrarSesion() {
+    if (inicioOK()) {
     Swal.fire({
         title: '¿Estás seguro de cerrar sesión?',
         text: "",
@@ -115,6 +125,16 @@ function cerrarSesion() {
             location.href = "../index.html";
         }
     })
+}else{
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No has iniciado sesion',
+        footer: '<a href="">Why do I have this issue?</a>'
+    }).then(function () {
+        location.href = "/pages/login.html";
+    });
+}
 }
 
 function limpiarForm() {
