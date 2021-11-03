@@ -1,9 +1,9 @@
-import { validarCodigo, validarCampoRequerido, validarNumeros, validarGeneralP } from "./validaciones.js";
-import { LibroN } from "./libro_class.js";
+import {validarCampoRequerido, validarNumeros, validarAnio, validarGeneral} from "./validaciones.js";
+import {PersonaN} from "./persona_class.js";
 
 //traer los campos a validar
-let codigo = document.getElementById('codigo');
 let nombre = document.getElementById('nombre');
+<<<<<<< HEAD
 let autor = document.getElementById('autor');
 let categoria = document.getElementById('categoria');
 let paginas = document.getElementById('paginas');
@@ -73,23 +73,54 @@ window.borrarLibro = (codigoE) => {
             localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
         }
     })
-}
+=======
+let radio = document.querySelectorAll('input[name="sexo"]');
+let peso = document.querySelector('#peso');
+let altura = document.getElementById('altura');
+let anio = document.getElementById('anio');
+let formulario = document.getElementById('formPersonas');
+let generacion = document.getElementById('genera');
+let mayor = document.getElementById('mayor');
+let mostrar = document.getElementById('mostrar');
 
-window.editarLibro = (codigoE) => {
-    editar = true;
-    libroEncontrado = listaLibros.find((libro) => { return libro.codigo == codigoE });
-    if (libroEncontrado != undefined) {
-        codigo.disabled = true;
-        codigo.value = `${libroEncontrado.codigo}`;
-        nombre.value = `${libroEncontrado.nombre}`;
-        autor.value = `${libroEncontrado.autor}`;
-        categoria.value = `${libroEncontrado.categoria}`;
-        paginas.value = `${libroEncontrado.paginas}`;
-        precio.value = `${libroEncontrado.precio}`;
-        direccion.value = `${libroEncontrado.direccion}`;
+let listaTotal = document.getElementById('listaTotal');
+let listaPersonas = [];
+
+// funciones cuando sucede evento blur en el html
+nombre.addEventListener('blur', () => {validarCampoRequerido(nombre)});
+peso.addEventListener('blur', () => {validarNumeros(peso)});
+altura.addEventListener('blur', () => {validarNumeros(altura)});
+anio.addEventListener('blur', () => {validarAnio(anio)});
+formulario.addEventListener('submit',  guardarPersona);
+
+let sexo = "Hombre";
+function definirSexo(contact){
+    for (let i = 0; i < contact.length; i++) {
+       contact[i].addEventListener('change', function(event){                          
+            let val = this.value;
+            if (val == 0){
+                sexo = "Hombre";
+            }else if (val == 1){
+                sexo = "Mujer";
+            }
+        });         
     }
+>>>>>>> 17aa2211137ba9be2e2101f671379cd347ffd364
 }
 
+const crearLista = (pers) =>{
+    let contenedor = document.createElement('div');
+    let cardPers = `<div class="card">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">${pers.nombre}</h5>
+      <p class="card-text">La persona es ${pers.sexo}, tiene ${pers.edad} años de edad. Su peso es de 
+      ${pers.peso} kg. y su altura de ${pers.altura} cm.</p>
+    </div>
+  </div>`;
+
+<<<<<<< HEAD
 function iniciarSesion(){
     location.href = "/pages/login.html";
 
@@ -136,34 +167,44 @@ function cerrarSesion() {
     });
 }
 }
+=======
+  contenedor.innerHTML = cardPers;
+  listaTotal.appendChild(contenedor);
+>>>>>>> 17aa2211137ba9be2e2101f671379cd347ffd364
 
-function limpiarForm() {
-    editar = false;
-    alerta.className = "alert alert-danger mt-4 d-none";
-    alerta.innerHTML = "";
-    limpiarFormulario();
 }
 
-const cargaInicial = () => {
-    listaLibros = JSON.parse(localStorage.getItem('listaLibrosT')) || [];
-    if (listaLibros.length > 0) {
-        listaLibros.forEach((libro) => {
-            crearFila(libro);
-        });
-    }
-    listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
-    if (listaLogin.length > 0) {
-        iniSesion(listaLogin[0]);
-    }
+const cargaInicial = () =>{
+    listaPersonas = JSON.parse(localStorage.getItem('listaPersonasF')) || [];
+
 }
 
-function guardarLibro(e) {
+function guardarPersona(e){
     e.preventDefault();
-    if (validarGeneralP()) {
-        ingresarLibro();
+    if (validarGeneral()){
+        definirSexo(radio);
+        let persona = agregarPersona();
+        listaPersonas.push(persona);
+        // guardar en localstorage previo a la base de datos
+        localStorage.setItem('listaPersonasF', JSON.stringify(listaPersonas));
+
+        generacion.className = "btn btn-primary";
+        generacion.addEventListener('click', () => {obtenerGeneracion(persona)});
+        mayor.className = "btn btn-primary";
+        mayor.addEventListener('click', () => {obtenerMayor(persona)});
+        mostrar.className = "btn btn-primary";
+        mostrar.addEventListener('click', () => {mostrarTodos(listaPersonas)});
+        console.log('Correcto');
+
+        limpiarFormulario();
+        limpiarLista();
+    }else{
+        console.log('Incorrecto');
     }
+
 }
 
+<<<<<<< HEAD
 function ingresarLibro() {
     if (editar) {
         let idx = listaLibros.indexOf(libroEncontrado);
@@ -208,19 +249,33 @@ function ingresarLibro() {
     localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
     limpiarFormulario();
     cargaInicial();
+=======
+function limpiarLista(){
+    listaTotal.innerHTML = "";
 }
 
-function limpiarFormulario() {
-    formulario.reset();
-    codigo.disabled = false;
-    codigo.className = 'form-control';
-    nombre.className = 'form-control';
-    autor.className = 'form-control';
-    paginas.className = 'form-control';
-    precio.className = 'form-control';
-    direccion.className = 'form-control';
+function mostrarTodos(listaPersonas){
+    if (listaPersonas.length > 0){
+        listaPersonas.forEach((persona) => {
+            crearLista(persona); 
+        });
+        generacion.className = "btn btn-primary disabled";
+        mayor.className = "btn btn-primary disabled";
+        mostrar.className = "btn btn-primary disabled";
+    }
+
+>>>>>>> 17aa2211137ba9be2e2101f671379cd347ffd364
 }
 
+function obtenerGeneracion(persona){
+    let msj = persona.mostrarGeneracion();
+    let alerta = document.getElementById('msjAlerta');
+    alerta.className = "alert alert-danger mt-4";
+    alerta.innerHTML = msj;
+
+}
+
+<<<<<<< HEAD
 function iniSesion(usuarioC) {
     let ideUsuario = usuarioC.confirmar;
     saludo.innerHTML = `Hola, ${usuarioC.codigo}`;
@@ -233,14 +288,34 @@ function iniSesion(usuarioC) {
         textoAdmin.innerHTML = `${usuarioC.codigo}`;
         panel1.className = "";
     }
+=======
+function obtenerMayor(persona){
+    let msj = persona.esMayor();
+    let alerta = document.getElementById('msjAlerta');
+    alerta.className = "alert alert-danger mt-4";
+    alerta.innerHTML = msj;
+
 }
 
-function finSesion() {
-    saludo.innerHTML = `Iniciar sesión...`;
-    panel1.className = "d-none";
-    panel2.className = "text-center container borderF my-5";
-    panel3.className = "text-center container borderF my-5 d-none";
-    panel4.className = "text-center container borderF my-5 d-none";
+function agregarPersona(){
+    let nuevaPersona = new PersonaN();
+    nuevaPersona.nuevoNombre = nombre.value;
+    nuevaPersona.nuevoSexo =  sexo;
+    nuevaPersona.nuevoPeso = peso.value;
+    nuevaPersona.nuevaAltura = altura.value;
+    nuevaPersona.nuevoAnio = anio.value;
+    nuevaPersona.calcularEdad();
+    return nuevaPersona;
+>>>>>>> 17aa2211137ba9be2e2101f671379cd347ffd364
+}
+
+function limpiarFormulario(){
+    formulario.reset();
+
+    nombre.className = 'form-control';
+    peso.className = 'form-control';
+    altura.className = 'form-control';
+    anio.className = 'form-control';
 }
 
 cargaInicial();
