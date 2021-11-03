@@ -10,6 +10,7 @@
   <meta name="keywords" content="objetos, clases, DOM, BOM, javascript, html">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/35e1f586d0.js" crossorigin="anonymous"></script>
   <title>Aprendamos - BS</title>
 </head>
@@ -51,10 +52,66 @@
 
   <main>
     <div class="usuarioI">
-      <section class="container">
-        <p id="iniSes" class="mb-3 mb-lg-1">Sin inicio de sesión</p>
-      </section>
+      <div class="container">
+        <section class="row">
+          <div class="d-flex justify-content-end">
+            <p id="iniSes" class="mb-lg-1 mx-3">Iniciar sesión...</p>
+            <button id="iniciarS" type="button" class="btn btn-success btn-sm mb-lg-0 mx-1">Iniciar</button>
+            <button id="cerrarS" type="button" class="btn btn-danger btn-sm mb-lg-0">Cerrar</button>
+          </div>
+        </section>
+      </div>
     </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4 divnosotros">
+      <div class="col">
+        <div class="cardsobre">
+          <img src="..\images\ramiro.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ramiro Isa Jara</h5>
+            <p class="card-text">Administrador del sitio, ademas de un buen lector.
+              Genero preferido: Terror
+              Email: ramiroisa@mail.com
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="cardsobre">
+          <img src="..\images\jimena.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Jimena Gutierrez Vazquez</h5>
+            <p class="card-text">Encargada del sector de ventas y el envio
+              Genero preferido: Historia
+              Email: jimenagu@mail.com
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="cardsobre">
+          <img src="..\images\pablodott.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Pablo Dotti</h5>
+            <p class="card-text">Programador encargado de soporte y manejo de la pagina
+              Genero preferido: Belico
+              Email: pablodo@mail.com
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="cardsobre">
+          <img src="..\images\lucas.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Rodriguez</h5>
+            <p class="card-text">Encargado del control de calidad y atencion reclamos</p>
+             <p>Genero preferido: Policial</p> 
+             <p>Email: lucasro@mail.com</p>            
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
   </main>
@@ -117,7 +174,7 @@
     </section>
   </footer>
   <script src="../js/bootstrap.min.js"></script>
-  <script type="module" src="../js/admin.js"></script>
+  <script type="module" src="../js/index.js"></script>
 
 </body>
 

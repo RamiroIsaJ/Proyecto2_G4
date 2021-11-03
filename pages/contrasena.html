@@ -52,31 +52,46 @@
         </nav>
     </header>
 
-    <main class="contenedor my-5">
-        <h1 class="display-6 my-4 text-center text-primary">Actualizar contraseña</h1>
-        <section class="my-4 bg-light p-3 borderF">
-            <form id="formClave">
-                <div class="mb-3">
-                    <label for="codigo" class="form-label textForm">ID usuario</label>
-                    <input type="text" class="form-control" id="codigo" placeholder="" disabled>
-                    <div class="invalid-feedback">Este campo es obligatorio</div>
-                </div>
-                <div class="mb-3">
-                    <label for="claveI" class="form-label textForm">Contraseña</label>
-                    <input type="password" class="form-control" id="claveI" placeholder="**************" maxlength="20">
-                    <div class="invalid-feedback">Este campo es obligatorio</div>
-                </div>
-                <div class="mb-3">
-                    <label for="claveC" class="form-label textForm">Confirmar contraseña</label>
-                    <input type="password" class="form-control" id="claveC" placeholder="**************" maxlength="20">
-                    <div class="invalid-feedback">Este campo es obligatorio</div>
-                </div>
-                <button class="btn btn-primary" type="submit">Actualizar</button>
-                </div>
-                <div class="alert alert-danger mt-4 d-none" role="alert" id="msjAlerta">
-                </div>
-            </form>
+    <main>
+        <div class="usuarioI">
+            <div class="container">
+                <section class="row">
+                    <div class="d-flex justify-content-end">
+                        <p id="iniSes" class="mb-lg-1 mx-3">Iniciar sesión...</p>
+                        <button id="iniciarS" type="button" class="btn btn-success btn-sm mb-lg-0 mx-1">Iniciar</button>
+                        <button id="cerrarS" type="button" class="btn btn-danger btn-sm mb-lg-0">Cerrar</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="contenedor my-5">
+            <h1 class="display-6 my-4 text-center text-primary">Actualizar contraseña</h1>
+            <section class="my-4 bg-light p-3 borderF">
+                <form id="formClave">
+                    <div class="mb-3">
+                        <label for="codigo" class="form-label textForm">ID usuario</label>
+                        <input type="text" class="form-control" id="codigo" placeholder="" disabled>
+                        <div class="invalid-feedback">Este campo es obligatorio</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="claveI" class="form-label textForm">Contraseña</label>
+                        <input type="password" class="form-control" id="claveI" placeholder="**************"
+                            maxlength="20" required>
+                        <div class="invalid-feedback">Este campo es obligatorio</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="claveC" class="form-label textForm">Confirmar contraseña</label>
+                        <input type="password" class="form-control" id="claveC" placeholder="**************"
+                            maxlength="20" required>
+                        <div class="invalid-feedback">Este campo es obligatorio</div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Actualizar</button>
+        </div>
+        <div class="alert alert-danger mt-4 d-none" role="alert" id="msjAlerta">
+        </div>
+        </form>
         </section>
+        </div>
     </main>
 
 

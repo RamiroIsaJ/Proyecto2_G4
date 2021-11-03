@@ -1,11 +1,14 @@
 import {validarCampoRequerido, validarContrasena } from "./validaciones.js";
-import { UsuarioN, AdminS } from "./usuarios_class.js";
 
 let codigo = document.getElementById('codigo');
 let claveI = document.getElementById('claveI');
 let claveC = document.getElementById('claveC');
+let iniciar = document.getElementById('iniciarS');
+let cerrar = document.getElementById('cerrarS');
 let formulario = document.getElementById('formClave');
 
+iniciar.addEventListener('click', () => { iniciarSesion() });
+cerrar.addEventListener('click', () => { cerrarSesion() });
 claveI.addEventListener('blur', () => { validarCampoRequerido(claveI) });
 claveC.addEventListener('blur', () => { validarCampoRequerido(claveC) });
 formulario.addEventListener('submit', editarUsuario);
@@ -30,6 +33,34 @@ function editarUsuario(e) {
         actualizarContrasena();
     }
 
+}
+
+function iniciarSesion(){
+    location.href = "/pages/login.html";
+
+}
+
+function cerrarSesion() {
+    Swal.fire({
+        title: '¿Estás seguro de cerrar sesión?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            if (listaLogin.length > 0) {
+                listaLogin.splice(0, 1);
+                localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
+                finSesion();
+                location.href = "../index.html";
+            }   
+        }
+    })
+    cargaInicial();
 }
 
 function cargarUsuario(usuarioE) {
@@ -68,13 +99,15 @@ function actualizarContrasena() {
             usuarioE.contrasena = claveI.value;
             listaAdmins[idx] = usuarioE;
             localStorage.setItem('listaAdminsT', JSON.stringify(listaAdmins));
+            borrarUsuario();
+            limpiarFormulario();
             Swal.fire(
                 'Buen trabajo',
                 'Se actualizó la contraseña',
                 'success'
-            );
-            borrarUsuario();
-            limpiarFormulario();
+            ).then(function() {
+                location.href = "/pages/login.html";
+            });
         } else {
             Swal.fire({
                 icon: 'error',

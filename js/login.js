@@ -8,11 +8,13 @@ let saludo = document.getElementById('iniSes');
 let panel1 = document.getElementById('panel1');
 let panel2 = document.getElementById('panel2');
 let panelTexto = document.getElementById('nombreU');
+let iniciar = document.getElementById('iniciarS');
 let cerrar = document.getElementById('cerrarS');
 
 // funciones cuando sucede un evento en el html
 idUsuario.addEventListener('blur', () => { validarCampoRequerido(idUsuario) });
 contrasena.addEventListener('blur', () => { validarCampoRequerido(contrasena) });
+iniciar.addEventListener('click', () => { iniciarSesion() });
 cerrar.addEventListener('click', () => { cerrarSesion() });
 formulario.addEventListener('submit', loginUsuario);
 let usuario = 1;
@@ -37,6 +39,11 @@ const cargaInicial = () => {
     }
 }
 
+function iniciarSesion(){
+    location.href = "/pages/login.html";
+
+}
+
 function cerrarSesion() {
     Swal.fire({
         title: '¿Estás seguro de cerrar sesión?',
@@ -52,7 +59,9 @@ function cerrarSesion() {
             listaLogin.splice(0, 1);
             localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
             finSesion();
+            location.href = "../index.html";  
         }
+              
     })
 }
 
@@ -149,4 +158,5 @@ function limpiarFormulario() {
     idUsuario.className = 'form-control';
     contrasena.className = 'form-control';
 }
+
 cargaInicial();

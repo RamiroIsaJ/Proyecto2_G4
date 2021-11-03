@@ -17,6 +17,7 @@ let panel1 = document.getElementById('panel1');
 let panel2 = document.getElementById('panel2');
 let panel3 = document.getElementById('panel3');
 let panel4 = document.getElementById('panel4');
+let iniciar = document.getElementById('iniciarS');
 let cerrar = document.getElementById('cerrarS');
 let textoUsuario = document.getElementById('ideU');
 let textoAdmin = document.getElementById('ideA');
@@ -33,6 +34,7 @@ paginas.addEventListener('blur', () => {validarNumeros(paginas)});
 precio.addEventListener('blur', () => {validarCampoRequerido(precio)});
 direccion.addEventListener('blur', () => { validarCampoRequerido(direccion) });
 limpiar.addEventListener('click', () => { limpiarForm() });
+iniciar.addEventListener('click', () => { iniciarSesion() });
 cerrar.addEventListener('click', () => { cerrarSesion() });
 formulario.addEventListener('submit', guardarLibro);
 
@@ -88,6 +90,11 @@ window.editarLibro = (codigoE) => {
     }
 }
 
+function iniciarSesion(){
+    location.href = "/pages/login.html";
+
+}
+
 function cerrarSesion() {
     Swal.fire({
         title: '¿Estás seguro de cerrar sesión?',
@@ -100,9 +107,12 @@ function cerrarSesion() {
         cancelButtonText: 'No'
     }).then((result) => {
         if (result.isConfirmed) {
-            listaLogin.splice(0, 1);
-            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
-            finSesion();
+            if (listaLogin.length > 0) {
+                listaLogin.splice(0, 1);
+                localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
+                finSesion();
+            }
+            location.href = "../index.html";
         }
     })
 }
@@ -167,7 +177,7 @@ function ingresarLibro() {
             Swal.fire(
                 'Buen trabajo',
                 'Se agregó el producto correctamente',
-                'success'
+                'success'  
             )
         }else {
             alerta.className = "alert alert-danger mt-4";
@@ -177,6 +187,7 @@ function ingresarLibro() {
     // guardar en localstorage previo a la base de datos
     localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
     limpiarFormulario();
+    cargaInicial();
 }
 
 function limpiarFormulario() {
@@ -196,10 +207,10 @@ function iniSesion(usuarioC) {
     panel2.className = "text-center container borderF my-5 d-none";
     if (ideUsuario  == undefined) {
         panel3.className = "text-center container borderF my-5";
-        textoUsuario.innerHTML = `Invitado: ${usuarioC.codigo}`;
+        textoUsuario.innerHTML = `${usuarioC.codigo}`;
     } else {
         panel4.className = "text-center container borderF my-5";
-        textoAdmin.innerHTML = `Admin: ${usuarioC.codigo}`;
+        textoAdmin.innerHTML = `${usuarioC.codigo}`;
         panel1.className = "";
     }
 }
