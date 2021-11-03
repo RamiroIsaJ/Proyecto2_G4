@@ -148,6 +148,11 @@ input:checked + .slider::before{
         margin-left: 25%;
         margin-right: 25%;
     }
+
+    iframe {
+        width: 240px;
+        height: 300px;
+    }
     
 }
 
@@ -171,5 +176,10 @@ input:checked + .slider::before{
 
     .container{
         width: 90%;
+    }
+
+    iframe {
+        width: 260px;
+        height: 300px;
     }
 }

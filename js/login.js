@@ -32,6 +32,7 @@ function definirUsuario(input) {
 
 const cargaInicial = () => {
     listaInvitados = JSON.parse(localStorage.getItem('listaInvitadosT')) || [];
+    console.log(listaInvitados)
     listaAdmins = JSON.parse(localStorage.getItem('listaAdminsT')) || [];
     listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
     if (listaLogin.length > 0) {

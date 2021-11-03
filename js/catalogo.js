@@ -114,7 +114,7 @@ function crearColumna(libro) {
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Seguir comprando</button>
-                      <a href="pages/error.html" class="btn btn-danger" role="button" data-bs-toggle="button">Finalizar compra</a>
+                      <a href="/pages/error.html" class="btn btn-danger" role="button" role="button">Finalizar compra</a>
                     </div>
                   </div>
                 </div>
