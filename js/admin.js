@@ -199,7 +199,7 @@ function ingresarLibro() {
                 'Se agregó el producto correctamente',
                 'success'  
             ).then(function() {
-                cargaInicial();
+                // cargaInicial();
             });
         }else {
             alerta.className = "alert alert-danger mt-4";
