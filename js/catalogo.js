@@ -139,10 +139,10 @@ function crearColumna(libro) {
                 <p class="card-text">Autor: ${libro.autor}</p>
                 <p class="card-text">Categoría: ${libro.categoria}</p>
                 <p class="card-text">Precio: $${libro.precio}</p>
-                <button type="button" class="btn btn-primary text-center" onclick="agregarCarrito('${libro.nombre}','${libro.precio}')" id="comprar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-primary text-center my-3" onclick="agregarCarrito('${libro.nombre}','${libro.precio}')" id="comprar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Comprar
                 </button>
-                <button type="button" class="btn btn-secondary text-center" onclick="agregarComentario('${libro.codigo}', '${libro.nombre}')" id="comentar">
+                <button type="button" class="btn btn-secondary text-center my-3" onclick="agregarComentario('${libro.codigo}', '${libro.nombre}')" id="comentar">
                 Comentar
                 </button>
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
