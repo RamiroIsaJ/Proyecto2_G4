@@ -3,7 +3,6 @@ import {PersonaN} from "./persona_class.js";
 
 //traer los campos a validar
 let nombre = document.getElementById('nombre');
-<<<<<<< HEAD
 let autor = document.getElementById('autor');
 let categoria = document.getElementById('categoria');
 let paginas = document.getElementById('paginas');
@@ -105,7 +104,6 @@ function definirSexo(contact){
             }
         });         
     }
->>>>>>> 17aa2211137ba9be2e2101f671379cd347ffd364
 }
 
 const crearLista = (pers) =>{
@@ -119,8 +117,8 @@ const crearLista = (pers) =>{
       ${pers.peso} kg. y su altura de ${pers.altura} cm.</p>
     </div>
   </div>`;
+}
 
-<<<<<<< HEAD
 function iniciarSesion(){
     location.href = "/pages/login.html";
 
@@ -170,8 +168,6 @@ function cerrarSesion() {
 =======
   contenedor.innerHTML = cardPers;
   listaTotal.appendChild(contenedor);
->>>>>>> 17aa2211137ba9be2e2101f671379cd347ffd364
-
 }
 
 const cargaInicial = () =>{
@@ -204,52 +200,6 @@ function guardarPersona(e){
 
 }
 
-<<<<<<< HEAD
-function ingresarLibro() {
-    if (editar) {
-        let idx = listaLibros.indexOf(libroEncontrado);
-        libroEncontrado.codigo = codigo.value;
-        libroEncontrado.nombre = nombre.value;
-        libroEncontrado.autor = autor.value;
-        libroEncontrado.categoria = categoria.value;
-        libroEncontrado.paginas = paginas.value;
-        libroEncontrado.precio = precio.value;
-        libroEncontrado.direccion = direccion.value;
-        // asignar al array la modificación
-        listaLibros[idx] = libroEncontrado;
-        Swal.fire(
-            'Buen trabajo',
-            'Se editó el libro correctamente',
-            'success'
-        )
-    }else {
-        let libroBuscado = listaLibros.find((libro) => {return libro.codigo == codigo.value });
-        if (libroBuscado == undefined) {
-            let nuevoLibro = new LibroN();
-            nuevoLibro.nuevoCodigo = codigo.value;
-            nuevoLibro.nuevoNombre = nombre.value;
-            nuevoLibro.nuevoAutor = autor.value;
-            nuevoLibro.nuevaCategoria = categoria.value;
-            nuevoLibro.nuevasPaginas = paginas.value;
-            nuevoLibro.nuevoPrecio = precio.value;
-            nuevoLibro.nuevaDireccion = direccion.value;
-            // agregar a la lista de productos
-            listaLibros.push(nuevoLibro);
-            Swal.fire(
-                'Buen trabajo',
-                'Se agregó el producto correctamente',
-                'success'  
-            )
-        }else {
-            alerta.className = "alert alert-danger mt-4";
-            alerta.innerHTML = "No se puede ingresar. El código ya existe !!";
-        }
-    }
-    // guardar en localstorage previo a la base de datos
-    localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
-    limpiarFormulario();
-    cargaInicial();
-=======
 function limpiarLista(){
     listaTotal.innerHTML = "";
 }
@@ -264,7 +214,6 @@ function mostrarTodos(listaPersonas){
         mostrar.className = "btn btn-primary disabled";
     }
 
->>>>>>> 17aa2211137ba9be2e2101f671379cd347ffd364
 }
 
 function obtenerGeneracion(persona){
@@ -275,20 +224,6 @@ function obtenerGeneracion(persona){
 
 }
 
-<<<<<<< HEAD
-function iniSesion(usuarioC) {
-    let ideUsuario = usuarioC.confirmar;
-    saludo.innerHTML = `Hola, ${usuarioC.codigo}`;
-    panel2.className = "text-center container borderF my-5 d-none";
-    if (ideUsuario  == undefined) {
-        panel3.className = "text-center container borderF my-5";
-        textoUsuario.innerHTML = `${usuarioC.codigo}`;
-    } else {
-        panel4.className = "text-center container borderF my-5";
-        textoAdmin.innerHTML = `${usuarioC.codigo}`;
-        panel1.className = "";
-    }
-=======
 function obtenerMayor(persona){
     let msj = persona.esMayor();
     let alerta = document.getElementById('msjAlerta');
@@ -306,7 +241,6 @@ function agregarPersona(){
     nuevaPersona.nuevoAnio = anio.value;
     nuevaPersona.calcularEdad();
     return nuevaPersona;
->>>>>>> 17aa2211137ba9be2e2101f671379cd347ffd364
 }
 
 function limpiarFormulario(){

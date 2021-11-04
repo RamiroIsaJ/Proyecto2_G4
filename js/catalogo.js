@@ -216,9 +216,6 @@ window.agregarComentario = (codigo, nombre) => {
     }
 }
 
-<<<<<<< HEAD
-cargaInicial();
-=======
 function ingresarComent(){
     if(validarComent()){
         let nuevoComentario = new ComentarioN();
@@ -245,4 +242,4 @@ function limpiarFormulario() {
 }
 
 cargaInicial();
->>>>>>> dev
+
