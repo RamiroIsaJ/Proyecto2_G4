@@ -54,7 +54,7 @@ function cerrarSesion() {
             icon: 'error',
             title: 'Oops...',
             text: 'No has iniciado sesion',
-            footer: '<a href="">¿Porque sucedio esto?</a>'
+            footer: '<a href="">¿Por que sucedio esto?</a>'
         }).then(function() {
             location.href = "/pages/login.html";
         });

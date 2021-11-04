@@ -58,7 +58,7 @@ function actualizarContrasena() {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Las contraseñas no son iguales',
-                footer: '<a href="">¿Porque sucedio esto?</a>'
+                footer: '<a href="">¿Por que sucedio esto?</a>'
             })
         }
     } else {
@@ -82,7 +82,7 @@ function actualizarContrasena() {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Las contraseñas no son iguales',
-                footer: '<a href="">¿Porque sucedio esto?</a>'
+                footer: '<a href="">¿Por que sucedio esto?</a>'
             })
         }
     }

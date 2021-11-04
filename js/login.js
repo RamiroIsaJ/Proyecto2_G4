@@ -78,7 +78,7 @@ function cerrarSesion() {
             icon: 'error',
             title: 'Oops...',
             text: 'No has iniciado sesion',
-            footer: '<a href="">¿Porque sucedio esto?</a>'
+            footer: '<a href="">¿Por que sucedio esto?</a>'
         }).then(function () {
             location.href = "/pages/login.html";
         });
@@ -111,7 +111,7 @@ function loginInvitado() {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'La contraseña es incorrecta',
-                footer: '<a href="">¿Porque sucedio esto?</a>'
+                footer: '<a href="">¿Por que sucedio esto?</a>'
             })
         }
     } else {
@@ -119,7 +119,7 @@ function loginInvitado() {
             icon: 'error',
             title: 'Oops...',
             text: 'El usuario no existe',
-            footer: '<a href="">¿Porque sucedio esto?</a>'
+            footer: '<a href="">¿Por que sucedio esto?</a>'
         })
     }
     limpiarFormulario();
@@ -139,7 +139,7 @@ function loginAdmin() {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'La contraseña es incorrecta',
-                footer: '<a href="">¿Porque sucedio esto?</a>'
+                footer: '<a href="">¿Por que sucedio esto?</a>'
             })
         }
     } else {
@@ -147,7 +147,7 @@ function loginAdmin() {
             icon: 'error',
             title: 'Oops...',
             text: 'El usuario no existe',
-            footer: '<a href="">¿Porque sucedio esto?</a>'
+            footer: '<a href="">¿Por que sucedio esto?</a>'
         })
     }
     limpiarFormulario();
