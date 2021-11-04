@@ -13,7 +13,7 @@ Maquetado de un sitio web para registro y venta online de libros. Contiene las s
 * Ramiro Isa Jara
 
 ## Enlace a Netlify
-https://aprendamos-bookstore.netlify.app/
+https://aprendamos-bookstore.netlify.app/index.html
 
 ## Lenguajes utilizados en el desarrollo
 * HTML
