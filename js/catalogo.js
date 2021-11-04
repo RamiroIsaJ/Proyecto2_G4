@@ -1,9 +1,27 @@
+import { validarCampoRequerido, validarComent} from "./validaciones.js";
+import { ComentarioN } from "./coment_class.js";
+
 let saludo = document.getElementById('iniSes');
 let iniciar = document.getElementById('iniciarS');
 let cerrar = document.getElementById('cerrarS');
+let panel1 = document.getElementById('panel1');
+let panel2 = document.getElementById('panel2');
+let mensaje = document.getElementById('mensaje');
+let comentar = document.getElementById('comentB');
+let cancelar = document.getElementById('cancelB');
+let formulario = document.getElementById('formC');
+let fila = document.querySelector("#coments");
+
+mensaje.addEventListener('blur', () => { validarCampoRequerido(mensaje) });
 iniciar.addEventListener('click', () => { iniciarSesion() });
 cerrar.addEventListener('click', () => { cerrarSesion() });
+comentar.addEventListener('click', () => { ingresarComent() });
+cancelar.addEventListener('click', () => { cerrarComent() });
+
+let listaComentarios = null;
 let listaLogin = null;
+let codigoLibro = null;
+let nombreLibro = null;
 let listaLibros = [];
 let totalCompra = 0;
 
@@ -17,6 +35,25 @@ const cargaInicial = () => {
         listaLibros.forEach(itemLibro => {
             crearColumna(itemLibro);
         });
+    }
+}
+
+const cargarComentarios = (codigo) => {
+    listaComentarios = JSON.parse(localStorage.getItem('listaComentariosT')) || [];
+    if (listaComentarios.length > 0) {
+        let libroComentarios = listaComentarios.filter((coment) => {return coment.codigo == codigo});
+        console.log(libroComentarios)
+        if (libroComentarios.length > 0) {
+            fila.innerHTML = `
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3> ${libroComentarios[0].nombre} </h3>
+                </div>
+            </div>`;
+            libroComentarios.forEach(itemComent => {
+                crearFila(itemComent);
+            }); 
+        }
     }
 }
 
@@ -76,6 +113,18 @@ function finSesion() {
     saludo.innerHTML = `Iniciar sesión...`;
 }
 
+function crearFila(comentario){
+    fila.innerHTML += `
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">${comentario.usuario}</h6>
+            <div class="borderC">
+            <p class="card-text mx-3 my-2">${comentario.mensaje}</p>
+            </div>
+        </div>
+    </div>`;
+}
+
 function crearColumna(libro) {
     let grilla = document.querySelector("#grilla");
     grilla.innerHTML += `
@@ -93,7 +142,7 @@ function crearColumna(libro) {
                 <button type="button" class="btn btn-primary text-center" onclick="agregarCarrito('${libro.nombre}','${libro.precio}')" id="comprar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Comprar
                 </button>
-                <button type="button" class="btn btn-secondary text-center" onclick="agregarComentario('${libro.nombre}','${libro.precio}')" id="comprar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-secondary text-center" onclick="agregarComentario('${libro.codigo}', '${libro.nombre}')" id="comentar">
                 Comentar
                 </button>
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -125,8 +174,7 @@ function crearColumna(libro) {
 }
 
 window.agregarCarrito = (nombre, precio) => {
-    let OK = inicioOK();
-    if (OK) {
+    if (inicioOK()) {
         let carrito = document.querySelector("#tarjetaCarrito");
         let total = document.querySelector("#totalCarrito")
         carrito.innerHTML += `
@@ -140,7 +188,7 @@ window.agregarCarrito = (nombre, precio) => {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Para comprar debes inciar sesión',
+            text: 'Para comprar debes iniciar sesión',
             footer: '<a href="">Why do I have this issue?</a>'
         }).then(function () {
             location.href = "/pages/login.html";
@@ -148,4 +196,53 @@ window.agregarCarrito = (nombre, precio) => {
     }
 }
 
+window.agregarComentario = (codigo, nombre) => {
+    fila.innerHTML = ``;
+    codigoLibro = codigo;
+    nombreLibro = nombre;
+    if (inicioOK()) {
+        panel1.className = "container my-5 d-none";
+        panel2.className = "container my-5";
+        cargarComentarios(codigo);
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Para comentar debes iniciar sesión',
+            footer: '<a href="">Why do I have this issue?</a>'
+        }).then(function () {
+            location.href = "/pages/login.html";
+        });
+    }
+}
+
+<<<<<<< HEAD
 cargaInicial();
+=======
+function ingresarComent(){
+    if(validarComent()){
+        let nuevoComentario = new ComentarioN();
+        nuevoComentario.usuario = listaLogin[0].codigo;
+        nuevoComentario.mensaje = mensaje.value;
+        nuevoComentario.codigo = codigoLibro;
+        nuevoComentario.nombre = nombreLibro;
+        listaComentarios.push(nuevoComentario);
+        // guardar en localstorage
+        localStorage.setItem('listaComentariosT', JSON.stringify(listaComentarios));
+        limpiarFormulario();   
+        cargarComentarios(nuevoComentario.codigo);
+    }
+}
+
+function cerrarComent(){
+    panel1.className = "container my-5";
+    panel2.className = "container my-5 d-none";
+}
+
+function limpiarFormulario() {
+    formulario.reset();
+    mensaje.className = 'form-control';
+}
+
+cargaInicial();
+>>>>>>> dev
