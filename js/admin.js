@@ -198,7 +198,9 @@ function ingresarLibro() {
                 'Buen trabajo',
                 'Se agregó el producto correctamente',
                 'success'  
-            )
+            ).then(function() {
+                cargaInicial();
+            });
         }else {
             alerta.className = "alert alert-danger mt-4";
             alerta.innerHTML = "No se puede ingresar. El código ya existe !!";
@@ -207,7 +209,6 @@ function ingresarLibro() {
     // guardar en localstorage previo a la base de datos
     localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
     limpiarFormulario();
-    cargaInicial();
 }
 
 function limpiarFormulario() {
