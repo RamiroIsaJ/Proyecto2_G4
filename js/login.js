@@ -8,11 +8,13 @@ let saludo = document.getElementById('iniSes');
 let panel1 = document.getElementById('panel1');
 let panel2 = document.getElementById('panel2');
 let panelTexto = document.getElementById('nombreU');
+let iniciar = document.getElementById('iniciarS');
 let cerrar = document.getElementById('cerrarS');
 
 // funciones cuando sucede un evento en el html
 idUsuario.addEventListener('blur', () => { validarCampoRequerido(idUsuario) });
 contrasena.addEventListener('blur', () => { validarCampoRequerido(contrasena) });
+iniciar.addEventListener('click', () => { iniciarSesion() });
 cerrar.addEventListener('click', () => { cerrarSesion() });
 formulario.addEventListener('submit', loginUsuario);
 let usuario = 1;
@@ -30,6 +32,7 @@ function definirUsuario(input) {
 
 const cargaInicial = () => {
     listaInvitados = JSON.parse(localStorage.getItem('listaInvitadosT')) || [];
+    console.log(listaInvitados)
     listaAdmins = JSON.parse(localStorage.getItem('listaAdminsT')) || [];
     listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
     if (listaLogin.length > 0) {
@@ -37,23 +40,49 @@ const cargaInicial = () => {
     }
 }
 
+function iniciarSesion() {
+    location.href = "/pages/login.html";
+}
+
+const inicioOK = () => {
+    listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
+    if (listaLogin.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function cerrarSesion() {
-    Swal.fire({
-        title: '¿Estás seguro de cerrar sesión?',
-        text: "",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si',
-        cancelButtonText: 'No'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            listaLogin.splice(0, 1);
-            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
-            finSesion();
-        }
-    })
+    if (inicioOK()) {
+        Swal.fire({
+            title: '¿Estás seguro de cerrar sesión?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                listaLogin.splice(0, 1);
+                localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
+                finSesion();
+                location.href = "../index.html";
+            }
+
+        })
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No has iniciado sesion',
+            footer: '<a href="">Why do I have this issue?</a>'
+        }).then(function () {
+            location.href = "/pages/login.html";
+        });
+    }
 }
 
 function loginUsuario(e) {
@@ -76,6 +105,8 @@ function loginInvitado() {
             localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
             iniSesion(invitadoE);
         } else {
+            listaLogin.push(invitadoE);
+            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -102,6 +133,8 @@ function loginAdmin() {
             localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
             iniSesion(adminE);
         } else {
+            listaLogin.push(adminE);
+            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -145,4 +178,5 @@ function limpiarFormulario() {
     idUsuario.className = 'form-control';
     contrasena.className = 'form-control';
 }
+
 cargaInicial();

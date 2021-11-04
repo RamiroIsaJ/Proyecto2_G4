@@ -1,5 +1,3 @@
-// script para validar los campos de los formularios
-// mediante expresiones regulares
 
 export function validarCodigo(input){
     if (input.value.trim() != "" && input.value.trim().length >= 3){
@@ -97,6 +95,22 @@ export function validarAdmin(){
 
 export function validarLogin(){
     if (validarCampoRequerido(usuario) && validarCampoRequerido(password)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+export function validarContrasena(){
+    if (validarCampoRequerido(claveC) && validarCampoRequerido(claveI)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+export function validarComent(){
+    if (validarCampoRequerido(mensaje)){
         return true;
     }else{
         return false;

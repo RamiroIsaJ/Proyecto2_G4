@@ -88,7 +88,9 @@ function ingresarInvitado() {
                 'Buen trabajo',
                 'Se agregó un nuevo usuario',
                 'success'
-            )
+            ).then(function() {
+                location.href = "/pages/login.html";
+            });
             // guardar en localstorage previo a la base de datos
             localStorage.setItem('listaInvitadosT', JSON.stringify(listaInvitados));
             limpiarFormulario();
@@ -121,7 +123,9 @@ function ingresarAdmin() {
                     'Buen trabajo',
                     'Se agregó un nuevo administrador',
                     'success'
-                )
+                ).then(function() {
+                    location.href = "/pages/login.html";
+                });
                 // guardar en localstorage previo a la base de datos
                 localStorage.setItem('listaAdminsT', JSON.stringify(listaAdmins));
                 limpiarFormulario();

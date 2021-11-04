@@ -26,6 +26,17 @@
     margin-right: 37%;
 }
 
+.borderC{
+    border: 1px solid rgb(172, 171, 171);
+    border-radius: 10px;
+}
+
+.contenedor3{
+    width: 75%;
+    margin-left: 12%;
+    margin-right: 13%;
+}
+
 .borderF{
     border: 1px solid rgb(196, 194, 194);
 }
@@ -33,6 +44,7 @@
 .usuarioI{
     border: 1px solid rgb(196, 194, 194);
     font-family: 'Lobster Two', cursive;
+    font-size: large;
     color: rgb(79, 79, 82);
 }
 

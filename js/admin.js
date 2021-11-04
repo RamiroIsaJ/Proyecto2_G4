@@ -17,6 +17,7 @@ let panel1 = document.getElementById('panel1');
 let panel2 = document.getElementById('panel2');
 let panel3 = document.getElementById('panel3');
 let panel4 = document.getElementById('panel4');
+let iniciar = document.getElementById('iniciarS');
 let cerrar = document.getElementById('cerrarS');
 let textoUsuario = document.getElementById('ideU');
 let textoAdmin = document.getElementById('ideA');
@@ -33,6 +34,7 @@ paginas.addEventListener('blur', () => {validarNumeros(paginas)});
 precio.addEventListener('blur', () => {validarCampoRequerido(precio)});
 direccion.addEventListener('blur', () => { validarCampoRequerido(direccion) });
 limpiar.addEventListener('click', () => { limpiarForm() });
+iniciar.addEventListener('click', () => { iniciarSesion() });
 cerrar.addEventListener('click', () => { cerrarSesion() });
 formulario.addEventListener('submit', guardarLibro);
 
@@ -48,21 +50,30 @@ const crearFila = (libro) => {
     <td>${libro.precio}</td>
     <td>${libro.direccion}</td>
     <td>
-      <button type="button" class="btn btn-warning" onclick="editarLibro(${libro.codigo});">Editar</button>
-      <button type="button" class="btn btn-danger" onclick="borrarLibro(${libro.codigo});">Borrar</button>
+      <button type="button" class="btn btn-warning my-1" onclick="editarLibro(${libro.codigo});">Editar</button>
+      <button type="button" class="btn btn-danger my-1" onclick="borrarLibro(${libro.codigo});">Borrar</button>
     </td>
   </tr>`;
 }
 
 window.borrarLibro = (codigoE) => {
     let idx = listaLibros.indexOf(listaLibros.find((libro) => {return libro.codigo == codigoE}));
-    if (idx!= undefined) {
-        let resp = confirm("¿ Estás seguro de eliminar el producto?");
-        if (resp) {
+    Swal.fire({
+        title: '¿Estás seguro de eliminar el libro?',
+        text: "No se podrá recuperar los datos",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
             listaLibros.splice(idx, 1);
             localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
+            location.reload();
         }
-    }
+    })
 }
 
 window.editarLibro = (codigoE) => {
@@ -80,7 +91,22 @@ window.editarLibro = (codigoE) => {
     }
 }
 
+function iniciarSesion(){
+    location.href = "/pages/login.html";
+
+}
+
+const inicioOK = () => {
+    listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
+    if (listaLogin.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function cerrarSesion() {
+    if (inicioOK()) {
     Swal.fire({
         title: '¿Estás seguro de cerrar sesión?',
         text: "",
@@ -92,11 +118,24 @@ function cerrarSesion() {
         cancelButtonText: 'No'
     }).then((result) => {
         if (result.isConfirmed) {
-            listaLogin.splice(0, 1);
-            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
-            finSesion();
+            if (listaLogin.length > 0) {
+                listaLogin.splice(0, 1);
+                localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
+                finSesion();
+            }
+            location.href = "../index.html";
         }
     })
+}else{
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No has iniciado sesion',
+        footer: '<a href="">Why do I have this issue?</a>'
+    }).then(function () {
+        location.href = "/pages/login.html";
+    });
+}
 }
 
 function limpiarForm() {
@@ -142,7 +181,9 @@ function ingresarLibro() {
             'Buen trabajo',
             'Se editó el libro correctamente',
             'success'
-        )
+        ).then(function() {
+            location.reload();
+        });
     }else {
         let libroBuscado = listaLibros.find((libro) => {return libro.codigo == codigo.value });
         if (libroBuscado == undefined) {
@@ -159,8 +200,10 @@ function ingresarLibro() {
             Swal.fire(
                 'Buen trabajo',
                 'Se agregó el producto correctamente',
-                'success'
-            )
+                'success'  
+            ).then(function() {
+                location.reload();
+            });
         }else {
             alerta.className = "alert alert-danger mt-4";
             alerta.innerHTML = "No se puede ingresar. El código ya existe !!";
@@ -188,10 +231,10 @@ function iniSesion(usuarioC) {
     panel2.className = "text-center container borderF my-5 d-none";
     if (ideUsuario  == undefined) {
         panel3.className = "text-center container borderF my-5";
-        textoUsuario.innerHTML = `Invitado: ${usuarioC.codigo}`;
+        textoUsuario.innerHTML = `${usuarioC.codigo}`;
     } else {
         panel4.className = "text-center container borderF my-5";
-        textoAdmin.innerHTML = `Admin: ${usuarioC.codigo}`;
+        textoAdmin.innerHTML = `${usuarioC.codigo}`;
         panel1.className = "";
     }
 }

@@ -10,6 +10,7 @@
   <meta name="keywords" content="objetos, clases, DOM, BOM, javascript, html">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/style.css">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/35e1f586d0.js" crossorigin="anonymous"></script>
   <title>Aprendamos - BS</title>
 </head>
@@ -58,9 +59,65 @@
 
   <main>
     <div class="usuarioI">
-      <section class="container">
-        <p id="iniSes" class="mb-3 mb-lg-1">Sin inicio de sesión</p>
-      </section>
+      <div class="container">
+        <section class="row">
+          <div class="d-flex justify-content-end">
+            <p id="iniSes" class="mb-lg-1 mx-3">Iniciar sesión...</p>
+            <button id="iniciarS" type="button" class="btn btn-success btn-sm mb-lg-0 mx-1">Iniciar</button>
+            <button id="cerrarS" type="button" class="btn btn-danger btn-sm mb-lg-0">Cerrar</button>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="container">
+      <h1 class="display-6 my-4 text-center text-primary">Quienes somos</h1>
+      <hr>
+    </div>
+    <div class="my-5 row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4 divnosotros">
+      <div class="col">
+        <div class="cardsobre">
+          <img src="..\images\ramiro.png" class="card-img-top" alt="imagen equipo">
+          <div class="card-body">
+            <h5 class="card-title">Ramiro Isa Jara</h5>
+            <p class="card-text"> Programador y administrador del sitio, además de un buen lector.
+            <p class="card-text"> Género preferido: Ciencia ficción</p>
+            <p class="card-text"> Email: ramiroisa@mail.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="cardsobre">
+          <img src="..\images\jimena.png" class="card-img-top" alt="imagen equipo">
+          <div class="card-body">
+            <h5 class="card-title">Jimena Gutierrez Vazquez</h5>
+            <p class="card-text">Encargada del área de ventas y el envío de productos.
+            <p class="card-text"> Género preferido: Historia</p>
+            <p class="card-text"> Email: jimenagu@mail.com </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="cardsobre">
+          <img src="..\images\pablodott.png" class="card-img-top" alt="imagen equipo">
+          <div class="card-body">
+            <h5 class="card-title">Pablo Dotti</h5>
+            <p class="card-text">Programador y encargado de soporte para manejo de la página.
+            <p class="card-text"> Género preferido: Bélico </p>
+            <p class="card-text"> Email: pablodo@mail.com </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="cardsobre">
+          <img src="..\images\lucas.png" class="card-img-top" alt="imagen equipo">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Rodriguez</h5>
+            <p class="card-text">Encargado del control de calidad y atención al cliente</p>
+            <p class="card-text"></p>Género preferido: Policial</p>
+            <p class="card-text"> Email: lucasro@mail.com</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4 divnosotros">
       <div class="col">
@@ -129,49 +186,49 @@
             class="fab fa-twitter-square fa-2x text-dark"></i></i></i></a>
       </div>
       <article class="row justify-content-center">
-        <div class="col-sm-12 col-md-6 col-lg-3">
-          <h4 class="text-left text-foot"> Catálogo </h4>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Ciencia</a>
-          </div>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Ciencia ficción</a>
-          </div>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Romance</a>
-          </div>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Superación</a>
-          </div>
+        <div class="my-3 col-sm-12 col-md-4 col-lg-3">
+            <h4 class="text-left text-foot"> Catálogo </h4>
+            <div>
+                <a class="text-left text-foot text-light" href="../pages/error.html">Ciencia</a>
+            </div>
+            <div>
+                <a class="text-left text-foot text-light" href="../pages/error.html">Ciencia ficción</a>
+            </div>
+            <div>
+                <a class="text-left text-foot text-light" href="../pages/error.html">Romance</a>
+            </div>
+            <div>
+                <a class="text-left text-foot text-light" href="../pages/error.html">Superación</a>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-          <h4 class="text-left text-foot"> Autores </h4>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Ciencia</a>
-          </div>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Ciencia ficción</a>
-          </div>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Romance</a>
-          </div>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Superación</a>
-          </div>
+        <div class=" my-3 col-sm-12 col-md-4 col-lg-3">
+            <h4 class="text-left text-foot"> Autores </h4>
+            <div>
+                <a class="text-left text-foot text-light" href="../pages/error.html">Ciencia</a>
+            </div>
+            <div>
+                <a class="text-left text-foot text-light" href="../pages/error.html">Ciencia ficción</a>
+            </div>
+            <div>
+                <a class="text-left text-foot text-light" href="../pages/error.html">Romance</a>
+            </div>
+            <div>
+                <a class="text-left text-foot text-light" href="../pages/error.html">Superación</a>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-          <h4 class="text-left text-foot"> Acerca de </h4>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Admin</a>
+        <div class="my-3 col-sm-12 col-md-4 col-lg-3">
+            <h4 class="text-left text-foot"> Acerca de </h4>
+            <div>
+              <a class="text-left text-foot text-light" href="../pages/admin.html">Admin</a>
+            </div>
+            <div>
+              <a class="text-left text-foot text-light" href="../pages/nosotros.html">Quienes somos</a>
+            </div>
+            <div>
+              <a class="text-left text-foot text-light" href="../index.html">Horarios de atención</a>
+            </div>
           </div>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Quienes somos</a>
-          </div>
-          <div>
-            <a class="text-left text-foot text-light" href="#">Horarios de atención</a>
-          </div>
-        </div>
-      </article>
+    </article>
     </section>
   </footer>
   <script src="../js/bootstrap.min.js"></script>
@@ -179,5 +236,4 @@
   <script type="module" src="../js/oscuro.js"></script>
 
 </body>
-
 </html>
