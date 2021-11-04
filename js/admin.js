@@ -71,6 +71,7 @@ window.borrarLibro = (codigoE) => {
         if (result.isConfirmed) {
             listaLibros.splice(idx, 1);
             localStorage.setItem('listaLibrosT', JSON.stringify(listaLibros));
+            location.reload();
         }
     })
 }
@@ -180,7 +181,9 @@ function ingresarLibro() {
             'Buen trabajo',
             'Se editó el libro correctamente',
             'success'
-        )
+        ).then(function() {
+            location.reload();
+        });
     }else {
         let libroBuscado = listaLibros.find((libro) => {return libro.codigo == codigo.value });
         if (libroBuscado == undefined) {
@@ -199,7 +202,7 @@ function ingresarLibro() {
                 'Se agregó el producto correctamente',
                 'success'  
             ).then(function() {
-                // cargaInicial();
+                location.reload();
             });
         }else {
             alerta.className = "alert alert-danger mt-4";
