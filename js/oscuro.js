@@ -41,8 +41,8 @@ check.addEventListener('click', function(){
     }
     bgl.classList.remove('bg-light')
     storage.setItem('oscuro', true)
-    
-  }else{
+  }
+  else{
     body.classList.remove('cambio-color')
     for (const i of card) {
       i.classList.remove('cambio-color-card')

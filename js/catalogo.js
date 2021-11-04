@@ -97,7 +97,7 @@ function cerrarSesion() {
             icon: 'error',
             title: 'Oops...',
             text: 'No has iniciado sesion',
-            footer: '<a href="">Why do I have this issue?</a>'
+            footer: '<a href="">¿Porque sucedio esto?</a>'
         }).then(function () {
             location.href = "/pages/login.html";
         });
@@ -189,7 +189,7 @@ window.agregarCarrito = (nombre, precio) => {
             icon: 'error',
             title: 'Oops...',
             text: 'Para comprar debes iniciar sesión',
-            footer: '<a href="">Why do I have this issue?</a>'
+            footer: '<a href="">¿Porque sucedio esto?</a>'
         }).then(function () {
             location.href = "/pages/login.html";
         });
@@ -209,7 +209,7 @@ window.agregarComentario = (codigo, nombre) => {
             icon: 'error',
             title: 'Oops...',
             text: 'Para comentar debes iniciar sesión',
-            footer: '<a href="">Why do I have this issue?</a>'
+            footer: '<a href="">¿Porque sucedio esto?</a>'
         }).then(function () {
             location.href = "/pages/login.html";
         });
