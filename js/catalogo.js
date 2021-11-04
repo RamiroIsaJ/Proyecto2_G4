@@ -130,7 +130,7 @@ function crearColumna(libro) {
     grilla.innerHTML += `
     <div class="col-sm-12 col-md-4 col-lg-3 mb-3 ">
         <div class="card">
-            <img src="${libro.direccion}" class="card-img-top" alt="${libro.nombre}">
+            <img src="${libro.direccion}" class="card-img-top" alt="${libro.nombre}" width="200" height="300">
             <div class="card-header">
                 ${libro.codigo}
             </div>
