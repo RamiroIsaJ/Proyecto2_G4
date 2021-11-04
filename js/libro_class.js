@@ -52,5 +52,4 @@ export class LibroN{
     get mostrarPrecio(){
         return this.precio;
     }
-
 }

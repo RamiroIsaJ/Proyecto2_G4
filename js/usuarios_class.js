@@ -56,5 +56,4 @@ export class AdminS extends UsuarioN{
             return false;
         }
     }
-
 }

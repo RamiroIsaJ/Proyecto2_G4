@@ -40,50 +40,49 @@ const cargaInicial = () => {
     }
 }
 
-function iniciarSesion(){
+function iniciarSesion() {
     location.href = "/pages/login.html";
-
 }
 
 const inicioOK = () => {
     listaLogin = JSON.parse(localStorage.getItem('listaLoginU')) || [];
     if (listaLogin.length > 0) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
 function cerrarSesion() {
     if (inicioOK()) {
-    Swal.fire({
-        title: '¿Estás seguro de cerrar sesión?',
-        text: "",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si',
-        cancelButtonText: 'No'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            listaLogin.splice(0, 1);
-            localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
-            finSesion();
-            location.href = "../index.html";  
-        }
-              
-    })
-} else{
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'No has iniciado sesion',
-        footer: '<a href="">Why do I have this issue?</a>'
-    }).then(function () {
-        location.href = "/pages/login.html";
-    });
-}
+        Swal.fire({
+            title: '¿Estás seguro de cerrar sesión?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                listaLogin.splice(0, 1);
+                localStorage.setItem('listaLoginU', JSON.stringify(listaLogin));
+                finSesion();
+                location.href = "../index.html";
+            }
+
+        })
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No has iniciado sesion',
+            footer: '<a href="">Why do I have this issue?</a>'
+        }).then(function () {
+            location.href = "/pages/login.html";
+        });
+    }
 }
 
 function loginUsuario(e) {

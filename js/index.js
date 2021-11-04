@@ -15,7 +15,6 @@ const cargaInicial = () => {
 
 function iniciarSesion(){
     location.href = "/pages/login.html";
-
 }
 
 const inicioOK = () => {

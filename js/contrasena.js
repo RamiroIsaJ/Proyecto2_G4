@@ -28,7 +28,6 @@ function editarUsuario(e) {
     if (validarContrasena()) {
         actualizarContrasena();
     }
-
 }
 
 function cargarUsuario(usuarioE) {
@@ -86,7 +85,6 @@ function actualizarContrasena() {
                 footer: '<a href="">Why do I have this issue?</a>'
             })
         }
-
     }
 }
 

@@ -1,5 +1,3 @@
-// script para validar los campos de los formularios
-// mediante expresiones regulares
 
 export function validarCodigo(input){
     if (input.value.trim() != "" && input.value.trim().length >= 3){
