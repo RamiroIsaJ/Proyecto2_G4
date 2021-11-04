@@ -50,8 +50,8 @@ const crearFila = (libro) => {
     <td>${libro.precio}</td>
     <td>${libro.direccion}</td>
     <td>
-      <button type="button" class="btn btn-warning" onclick="editarLibro(${libro.codigo});">Editar</button>
-      <button type="button" class="btn btn-danger" onclick="borrarLibro(${libro.codigo});">Borrar</button>
+      <button type="button" class="btn btn-warning my-1" onclick="editarLibro(${libro.codigo});">Editar</button>
+      <button type="button" class="btn btn-danger my-1" onclick="borrarLibro(${libro.codigo});">Borrar</button>
     </td>
   </tr>`;
 }
