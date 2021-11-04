@@ -69,6 +69,12 @@
 .rob1{
     border-radius: 5%;
 }
+.divquienes{
+    margin: 20px auto;
+    width: 90%;
+    border: dimgrey solid;
+    border-radius: 10px;
+}
 /* Estilo del modo oscuro */
 .oscuro{
    display: flex;
@@ -83,6 +89,8 @@ align-items: center;
 width: 40PX;
 height: 20PX;
 margin-left: 10px;
+border: rgb(172, 171, 171) solid;
+border-radius: 10px;
 }
 .boton input{
     opacity: 0;
@@ -105,12 +113,12 @@ background-color: rgb(194, 196, 197);
 .slider::before{
     position: absolute;
     content: "";
-    height: 12.5px;
-    width: 12.5px;
-    left: 5px;
+    height: 12px;
+    width: 12px;
+    left: 4px;
     right: 5px;
-    bottom:2px;
-    top: 3.5px;
+    bottom:5px;
+    top: 1px;
     background-color: rgb(255, 255, 255);
     }
 input:checked + .slider{
@@ -120,7 +128,7 @@ input:focus + .slider::before{
     background-color: rgb(255, 255, 255);
 }
 input:checked + .slider::before{
-    transform: translateX(18PX);
+    transform: translateX(16PX);
 }
 .slider.round{
     border-radius: 10px;
@@ -139,7 +147,7 @@ input:checked + .slider::before{
 .cambio-color-section{
     background-color: rgba(24, 24, 24, 0.87)!important;
     color: rgba(241, 235, 235, 0.925);
-}
+} 
  
 /*fin de estilo modo oscuro*/
 @media (max-width: 992px){
