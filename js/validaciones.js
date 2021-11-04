@@ -58,7 +58,7 @@ export function validarCampoRequerido(input){
 export function validarGeneralP(){
     let alerta = document.getElementById('msjAlerta');
     if (validarCodigo(codigo) && validarCampoRequerido(nombre) && validarCampoRequerido(autor) && validarNumeros(paginas) 
-    && validarNumeros(precio) && validarCampoRequerido(direccion) ){
+    && validarCampoRequerido(precio) && validarCampoRequerido(direccion) ){
         alerta.className = "alert alert-danger mt-4 d-none";
         return true;
     }else{
@@ -105,6 +105,14 @@ export function validarLogin(){
 
 export function validarContrasena(){
     if (validarCampoRequerido(claveC) && validarCampoRequerido(claveI)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+export function validarComent(){
+    if (validarCampoRequerido(mensaje)){
         return true;
     }else{
         return false;
