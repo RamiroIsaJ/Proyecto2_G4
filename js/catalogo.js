@@ -47,7 +47,7 @@ const cargarComentarios = (codigo) => {
             fila.innerHTML = `
             <div class="card">
                 <div class="card-header text-center">
-                    ${libroComentarios[0].nombre}
+                    <h3> ${libroComentarios[0].nombre} </h3>
                 </div>
             </div>`;
             libroComentarios.forEach(itemComent => {
